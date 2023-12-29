@@ -1,0 +1,1583 @@
+{
+  "iphones": [
+    {
+      "id": 1,
+      "category": "iphone11",
+      "category_id": 1011,
+      "name": "Apple iPhone 11 128GB (MQ233)",
+      "price": 1437,
+      "favorite" : false,
+      "gallery": [""],
+      "old-price": 1537,
+      "colors" : ["#000000", "#781DBC", "#E10000", "#E1B000", "#E8E8E8"],
+      "storage": ["128GB", "256GB", "512GB", "1TB"],
+      "specs" : [
+        {
+          "title": "Screen",
+          "values" : [
+            {
+              "title": "Screen Diagonal",
+              "value": 6.7
+            },
+            {
+              "title": "The Screen Resolution",
+              "value": "2796x1290"
+            },
+            {
+              "title": "The Screen Pixel Density",
+              "value": "460ppi"
+            },
+
+            {
+              "title": "The Screen Refresh Rate",
+              "value": "120HZ"
+            },
+
+            {
+              "title": "Screen type",
+              "value": "OLED"
+            }
+
+
+          ]
+        },
+
+        {
+          "title": "Cpu",
+          "values" : [
+            {
+              "title": "CPU",
+              "value": "A16 Bionic"
+            },
+            {
+              "title": "Number of cores",
+              "value": 6
+            }
+            
+
+
+          ]
+        }
+      ],
+      "screen-size": 6.7,
+      "cpu": "Apple A16 Bionic",
+      "cores": 6,
+      "main-camera": "48-12-12MP",
+      "front-camera": "12MP",
+      "battery": 4323,
+      "resolution": [2796, 1290],
+      "refresh-rate": 120,
+      "density": 460,
+      "screen-type": "OLED",
+      "additional": ["Dynamic Island", "Always-On display", "HDR display", "True Tone", "Wide color (P3)"]
+    },
+
+    {
+      "id": 2,
+      "category": "iphone12",
+      "category_id": 1012,
+      "name": "Apple iPhone 12 128GB (MQ233)",
+      "price": 1537,
+      "favorite" : false,
+      "gallery": [""],
+      "old-price": 1537,
+      "colors" : ["#000000", "#781DBC", "#E10000", "#E1B000", "#E8E8E8"],
+      "storage": ["128GB", "256GB", "512GB", "1TB"],
+      "specs" : [
+        {
+          "title": "Screen",
+          "values" : [
+            {
+              "title": "Screen Diagonal",
+              "value": 6.7
+            },
+            {
+              "title": "The Screen Resolution",
+              "value": "2796x1290"
+            },
+            {
+              "title": "The Screen Pixel Density",
+              "value": "460ppi"
+            },
+
+            {
+              "title": "The Screen Refresh Rate",
+              "value": "120HZ"
+            },
+
+            {
+              "title": "Screen type",
+              "value": "OLED"
+            }
+
+
+          ]
+        },
+
+        {
+          "title": "Cpu",
+          "values" : [
+            {
+              "title": "CPU",
+              "value": "A16 Bionic"
+            },
+            {
+              "title": "Number of cores",
+              "value": 6
+            }
+            
+
+
+          ]
+        }
+      ],
+      "screen-size": 6.7,
+      "cpu": "Apple A16 Bionic",
+      "cores": 6,
+      "main-camera": "48-12-12MP",
+      "front-camera": "12MP",
+      "battery": 4323,
+      "resolution": [2796, 1290],
+      "refresh-rate": 120,
+      "density": 460,
+      "screen-type": "OLED",
+      "additional": ["Dynamic Island", "Always-On display", "HDR display", "True Tone", "Wide color (P3)"]
+    },
+
+    {
+      "id": 3,
+      "category": "iphone13",
+      "category_id": 1013,
+      "name": "Apple iPhone 13 128GB (MQ233)",
+      "price": 1637,
+      "favorite" : false,
+      "gallery": [""],
+      "old-price": 1537,
+      "colors" : ["#000000", "#781DBC", "#E10000", "#E1B000", "#E8E8E8"],
+      "storage": ["128GB", "256GB", "512GB", "1TB"],
+      "specs" : [
+        {
+          "title": "Screen",
+          "values" : [
+            {
+              "title": "Screen Diagonal",
+              "value": 6.7
+            },
+            {
+              "title": "The Screen Resolution",
+              "value": "2796x1290"
+            },
+            {
+              "title": "The Screen Pixel Density",
+              "value": "460ppi"
+            },
+
+            {
+              "title": "The Screen Refresh Rate",
+              "value": "120HZ"
+            },
+
+            {
+              "title": "Screen type",
+              "value": "OLED"
+            }
+
+
+          ]
+        },
+
+        {
+          "title": "Cpu",
+          "values" : [
+            {
+              "title": "CPU",
+              "value": "A16 Bionic"
+            },
+            {
+              "title": "Number of cores",
+              "value": 6
+            }
+            
+
+
+          ]
+        }
+      ],
+      "screen-size": 6.7,
+      "cpu": "Apple A16 Bionic",
+      "cores": 6,
+      "main-camera": "48-12-12MP",
+      "front-camera": "12MP",
+      "battery": 4323,
+      "resolution": [2796, 1290],
+      "refresh-rate": 120,
+      "density": 460,
+      "screen-type": "OLED",
+      "additional": ["Dynamic Island", "Always-On display", "HDR display", "True Tone", "Wide color (P3)"]
+    },
+
+    {
+      "id": 4,
+      "category": "iphone14",
+      "category_id": 1014,
+      "name": "Apple iPhone 14 128GB (MQ233)",
+      "price": 1737,
+      "favorite" : false,
+      "gallery": [""],
+      "old-price": 1537,
+      "colors" : ["#000000", "#781DBC", "#E10000", "#E1B000", "#E8E8E8"],
+      "storage": ["128GB", "256GB", "512GB", "1TB"],
+      "specs" : [
+        {
+          "title": "Screen",
+          "values" : [
+            {
+              "title": "Screen Diagonal",
+              "value": 6.7
+            },
+            {
+              "title": "The Screen Resolution",
+              "value": "2796x1290"
+            },
+            {
+              "title": "The Screen Pixel Density",
+              "value": "460ppi"
+            },
+
+            {
+              "title": "The Screen Refresh Rate",
+              "value": "120HZ"
+            },
+
+            {
+              "title": "Screen type",
+              "value": "OLED"
+            }
+
+
+          ]
+        },
+
+        {
+          "title": "Cpu",
+          "values" : [
+            {
+              "title": "CPU",
+              "value": "A16 Bionic"
+            },
+            {
+              "title": "Number of cores",
+              "value": 6
+            }
+            
+
+
+          ]
+        }
+      ],
+      "screen-size": 6.7,
+      "cpu": "Apple A16 Bionic",
+      "cores": 6,
+      "main-camera": "48-12-12MP",
+      "front-camera": "12MP",
+      "battery": 4323,
+      "resolution": [2796, 1290],
+      "refresh-rate": 120,
+      "density": 460,
+      "screen-type": "OLED",
+      "additional": ["Dynamic Island", "Always-On display", "HDR display", "True Tone", "Wide color (P3)"]
+    },
+
+    {
+      "id": 5,
+      "category": "iphone11pro",
+      "category_id": 10111,
+      "name": "Apple iPhone 11 Pro 128GB (MQ233)",
+      "price": 1498,
+      "favorite" : false,
+      "gallery": [""],
+      "old-price": 1537,
+      "colors" : ["#000000", "#781DBC", "#E10000", "#E1B000", "#E8E8E8"],
+      "storage": ["128GB", "256GB", "512GB", "1TB"],
+      "specs" : [
+        {
+          "title": "Screen",
+          "values" : [
+            {
+              "title": "Screen Diagonal",
+              "value": 6.7
+            },
+            {
+              "title": "The Screen Resolution",
+              "value": "2796x1290"
+            },
+            {
+              "title": "The Screen Pixel Density",
+              "value": "460ppi"
+            },
+
+            {
+              "title": "The Screen Refresh Rate",
+              "value": "120HZ"
+            },
+
+            {
+              "title": "Screen type",
+              "value": "OLED"
+            }
+
+
+          ]
+        },
+
+        {
+          "title": "Cpu",
+          "values" : [
+            {
+              "title": "CPU",
+              "value": "A16 Bionic"
+            },
+            {
+              "title": "Number of cores",
+              "value": 6
+            }
+            
+
+
+          ]
+        }
+      ],
+      "screen-size": 6.7,
+      "cpu": "Apple A16 Bionic",
+      "cores": 6,
+      "main-camera": "48-12-12MP",
+      "front-camera": "12MP",
+      "battery": 4323,
+      "resolution": [2796, 1290],
+      "refresh-rate": 120,
+      "density": 460,
+      "screen-type": "OLED",
+      "additional": ["Dynamic Island", "Always-On display", "HDR display", "True Tone", "Wide color (P3)"]
+    },
+
+
+    {
+      "id": 6,
+      "category": "iphone13pro",
+      "category_id": 10133,
+      "name": "Apple iPhone 13 Pro 128GB (MQ233)",
+      "price": 1697,
+      "favorite" : false,
+      "gallery": [""],
+      "old-price": 1537,
+      "colors" : ["#000000", "#781DBC", "#E10000", "#E1B000", "#E8E8E8"],
+      "storage": ["128GB", "256GB", "512GB", "1TB"],
+      "specs" : [
+        {
+          "title": "Screen",
+          "values" : [
+            {
+              "title": "Screen Diagonal",
+              "value": 6.7
+            },
+            {
+              "title": "The Screen Resolution",
+              "value": "2796x1290"
+            },
+            {
+              "title": "The Screen Pixel Density",
+              "value": "460ppi"
+            },
+
+            {
+              "title": "The Screen Refresh Rate",
+              "value": "120HZ"
+            },
+
+            {
+              "title": "Screen type",
+              "value": "OLED"
+            }
+
+
+          ]
+        },
+
+        {
+          "title": "Cpu",
+          "values" : [
+            {
+              "title": "CPU",
+              "value": "A16 Bionic"
+            },
+            {
+              "title": "Number of cores",
+              "value": 6
+            }
+            
+
+
+          ]
+        }
+      ],
+      "screen-size": 6.7,
+      "cpu": "Apple A16 Bionic",
+      "cores": 6,
+      "main-camera": "48-12-12MP",
+      "front-camera": "12MP",
+      "battery": 4323,
+      "resolution": [2796, 1290],
+      "refresh-rate": 120,
+      "density": 460,
+      "screen-type": "OLED",
+      "additional": ["Dynamic Island", "Always-On display", "HDR display", "True Tone", "Wide color (P3)"]
+    },
+
+    {
+      "id": 7,
+      "category": "iphone14",
+      "category_id": 1014,
+      "name": "Apple iPhone 14 128GB (MQ233)",
+      "price": 1897,
+      "favorite" : false,
+      "gallery": [""],
+      "old-price": 1537,
+      "colors" : ["#000000", "#781DBC", "#E10000", "#E1B000", "#E8E8E8"],
+      "storage": ["128GB", "256GB", "512GB", "1TB"],
+      "specs" : [
+        {
+          "title": "Screen",
+          "values" : [
+            {
+              "title": "Screen Diagonal",
+              "value": 6.7
+            },
+            {
+              "title": "The Screen Resolution",
+              "value": "2796x1290"
+            },
+            {
+              "title": "The Screen Pixel Density",
+              "value": "460ppi"
+            },
+
+            {
+              "title": "The Screen Refresh Rate",
+              "value": "120HZ"
+            },
+
+            {
+              "title": "Screen type",
+              "value": "OLED"
+            }
+
+
+          ]
+        },
+
+        {
+          "title": "Cpu",
+          "values" : [
+            {
+              "title": "CPU",
+              "value": "A16 Bionic"
+            },
+            {
+              "title": "Number of cores",
+              "value": 6
+            }
+            
+
+
+          ]
+        }
+      ],
+      "screen-size": 6.7,
+      "cpu": "Apple A16 Bionic",
+      "cores": 6,
+      "main-camera": "48-12-12MP",
+      "front-camera": "12MP",
+      "battery": 4323,
+      "resolution": [2796, 1290],
+      "refresh-rate": 120,
+      "density": 460,
+      "screen-type": "OLED",
+      "additional": ["Dynamic Island", "Always-On display", "HDR display", "True Tone", "Wide color (P3)"]
+    },
+
+    {
+      "id": 8,
+      "category": "iphone14pro",
+      "category_id": 10144,
+      "name": "Apple iPhone 14 Pro 128GB (MQ233)",
+      "price": 1937,
+      "favorite" : false,
+      "gallery": [""],
+      "old-price": 1537,
+      "colors" : ["#000000", "#781DBC", "#E10000", "#E1B000", "#E8E8E8"],
+      "storage": ["128GB", "256GB", "512GB", "1TB"],
+      "specs" : [
+        {
+          "title": "Screen",
+          "values" : [
+            {
+              "title": "Screen Diagonal",
+              "value": 6.7
+            },
+            {
+              "title": "The Screen Resolution",
+              "value": "2796x1290"
+            },
+            {
+              "title": "The Screen Pixel Density",
+              "value": "460ppi"
+            },
+
+            {
+              "title": "The Screen Refresh Rate",
+              "value": "120HZ"
+            },
+
+            {
+              "title": "Screen type",
+              "value": "OLED"
+            }
+
+
+          ]
+        },
+
+        {
+          "title": "Cpu",
+          "values" : [
+            {
+              "title": "CPU",
+              "value": "A16 Bionic"
+            },
+            {
+              "title": "Number of cores",
+              "value": 6
+            }
+            
+
+
+          ]
+        }
+      ],
+      
+      "screen-size": 6.7,
+      "cpu": "Apple A16 Bionic",
+      "cores": 6,
+      "main-camera": "48-12-12MP",
+      "front-camera": "12MP",
+      "battery": 4323,
+      "resolution": [2796, 1290],
+      "refresh-rate": 120,
+      "density": 460,
+      "screen-type": "OLED",
+      "additional": ["Dynamic Island", "Always-On display", "HDR display", "True Tone", "Wide color (P3)"]
+    },
+
+
+    {
+      "id": 9,
+      "category": "iphonex",
+      "category_id": 1009,
+      "name": "Apple iPhone X 64GB (MQ233)",
+      "price": 1137,
+      "favorite" : false,
+      "gallery": [""],
+      "old-price": 1537,
+      "colors" : ["#000000", "#781DBC", "#E10000", "#E1B000", "#E8E8E8"],
+      "storage": ["128GB", "256GB", "512GB", "1TB"],
+      "specs" : [
+        {
+          "title": "Screen",
+          "values" : [
+            {
+              "title": "Screen Diagonal",
+              "value": 6.7
+            },
+            {
+              "title": "The Screen Resolution",
+              "value": "2796x1290"
+            },
+            {
+              "title": "The Screen Pixel Density",
+              "value": "460ppi"
+            },
+
+            {
+              "title": "The Screen Refresh Rate",
+              "value": "120HZ"
+            },
+
+            {
+              "title": "Screen type",
+              "value": "OLED"
+            }
+
+
+          ]
+        },
+
+        {
+          "title": "Cpu",
+          "values" : [
+            {
+              "title": "CPU",
+              "value": "A16 Bionic"
+            },
+            {
+              "title": "Number of cores",
+              "value": 6
+            }
+            
+
+
+          ]
+        }
+      ],
+      "screen-size": 6.7,
+      "cpu": "Apple A16 Bionic",
+      "cores": 6,
+      "main-camera": "48-12-12MP",
+      "front-camera": "12MP",
+      "battery": 4323,
+      "resolution": [2796, 1290],
+      "refresh-rate": 120,
+      "density": 460,
+      "screen-type": "OLED",
+      "additional": ["Dynamic Island", "Always-On display", "HDR display", "True Tone", "Wide color (P3)"]
+    },
+
+    {
+      "id": 10,
+      "category": "iphonexr",
+      "category_id": 1010,
+      "name": "Apple iPhone XR 32GB (MQ233)",
+      "price": 1237,
+      "favorite" : false,
+      "gallery": [""],
+      "old-price": 1537,
+      "colors" : ["#000000", "#781DBC", "#E10000", "#E1B000", "#E8E8E8"],
+      "storage": ["128GB", "256GB", "512GB", "1TB"],
+      "specs" : [
+        {
+          "title": "Screen",
+          "values" : [
+            {
+              "title": "Screen Diagonal",
+              "value": 6.7
+            },
+            {
+              "title": "The Screen Resolution",
+              "value": "2796x1290"
+            },
+            {
+              "title": "The Screen Pixel Density",
+              "value": "460ppi"
+            },
+
+            {
+              "title": "The Screen Refresh Rate",
+              "value": "120HZ"
+            },
+
+            {
+              "title": "Screen type",
+              "value": "OLED"
+            }
+
+
+          ]
+        },
+
+        {
+          "title": "Cpu",
+          "values" : [
+            {
+              "title": "CPU",
+              "value": "A16 Bionic"
+            },
+            {
+              "title": "Number of cores",
+              "value": 6
+            }
+            
+
+
+          ]
+        }
+      ],
+      "screen-size": 6.7,
+      "cpu": "Apple A16 Bionic",
+      "cores": 6,
+      "main-camera": "48-12-12MP",
+      "front-camera": "12MP",
+      "battery": 4323,
+      "resolution": [2796, 1290],
+      "refresh-rate": 120,
+      "density": 460,
+      "screen-type": "OLED",
+      "additional": ["Dynamic Island", "Always-On display", "HDR display", "True Tone", "Wide color (P3)"]
+    },
+
+    {
+      "id": 11,
+      "category": "iphone8",
+      "category_id": 1008,
+      "name": "Apple iPhone 8 32GB (MQ233)",
+      "price": 937,
+      "favorite" : false,
+      "gallery": [""],
+      "old-price": 1537,
+      "colors" : ["#000000", "#781DBC", "#E10000", "#E1B000", "#E8E8E8"],
+      "storage": ["128GB", "256GB", "512GB", "1TB"],
+      "specs" : [
+        {
+          "title": "Screen",
+          "values" : [
+            {
+              "title": "Screen Diagonal",
+              "value": 6.7
+            },
+            {
+              "title": "The Screen Resolution",
+              "value": "2796x1290"
+            },
+            {
+              "title": "The Screen Pixel Density",
+              "value": "460ppi"
+            },
+
+            {
+              "title": "The Screen Refresh Rate",
+              "value": "120HZ"
+            },
+
+            {
+              "title": "Screen type",
+              "value": "OLED"
+            }
+
+
+          ]
+        },
+
+        {
+          "title": "Cpu",
+          "values" : [
+            {
+              "title": "CPU",
+              "value": "A16 Bionic"
+            },
+            {
+              "title": "Number of cores",
+              "value": 6
+            }
+            
+
+
+          ]
+        }
+      ],
+      "screen-size": 6.7,
+      "cpu": "Apple A16 Bionic",
+      "cores": 6,
+      "main-camera": "48-12-12MP",
+      "front-camera": "12MP",
+      "battery": 4323,
+      "resolution": [2796, 1290],
+      "refresh-rate": 120,
+      "density": 460,
+      "screen-type": "OLED",
+      "additional": ["Dynamic Island", "Always-On display", "HDR display", "True Tone", "Wide color (P3)"]
+    },
+
+    {
+      "id": 12,
+      "category": "iphone7plus",
+      "category_id": 10077,
+      "name": "Apple iPhone 7 Plus 64GB (MQ233)",
+      "price": 837,
+      "favorite" : false,
+      "gallery": [""],
+      "old-price": 1537,
+      "colors" : ["#000000", "#781DBC", "#E10000", "#E1B000", "#E8E8E8"],
+      "storage": ["128GB", "256GB", "512GB", "1TB"],
+      "specs" : [
+        {
+          "title": "Screen",
+          "values" : [
+            {
+              "title": "Screen Diagonal",
+              "value": 6.7
+            },
+            {
+              "title": "The Screen Resolution",
+              "value": "2796x1290"
+            },
+            {
+              "title": "The Screen Pixel Density",
+              "value": "460ppi"
+            },
+
+            {
+              "title": "The Screen Refresh Rate",
+              "value": "120HZ"
+            },
+
+            {
+              "title": "Screen type",
+              "value": "OLED"
+            }
+
+
+          ]
+        },
+
+        {
+          "title": "Cpu",
+          "values" : [
+            {
+              "title": "CPU",
+              "value": "A16 Bionic"
+            },
+            {
+              "title": "Number of cores",
+              "value": 6
+            }
+            
+
+
+          ]
+        }
+      ],
+      "screen-size": 6.7,
+      "cpu": "Apple A16 Bionic",
+      "cores": 6,
+      "main-camera": "48-12-12MP",
+      "front-camera": "12MP",
+      "battery": 4323,
+      "resolution": [2796, 1290],
+      "refresh-rate": 120,
+      "density": 460,
+      "screen-type": "OLED",
+      "additional": ["Dynamic Island", "Always-On display", "HDR display", "True Tone", "Wide color (P3)"]
+    },
+
+    {
+      "id": 13,
+      "category": "iphone6",
+      "category_id": 1006,
+      "name": "Apple iPhone 6 32GB (MQ233)",
+      "price": 737,
+      "favorite" : false,
+      "gallery": [""],
+      "old-price": 1537,
+      "colors" : ["#000000", "#781DBC", "#E10000", "#E1B000", "#E8E8E8"],
+      "storage": ["128GB", "256GB", "512GB", "1TB"],
+      "specs" : [
+        {
+          "title": "Screen",
+          "values" : [
+            {
+              "title": "Screen Diagonal",
+              "value": 6.7
+            },
+            {
+              "title": "The Screen Resolution",
+              "value": "2796x1290"
+            },
+            {
+              "title": "The Screen Pixel Density",
+              "value": "460ppi"
+            },
+
+            {
+              "title": "The Screen Refresh Rate",
+              "value": "120HZ"
+            },
+
+            {
+              "title": "Screen type",
+              "value": "OLED"
+            }
+
+
+          ]
+        },
+
+        {
+          "title": "Cpu",
+          "values" : [
+            {
+              "title": "CPU",
+              "value": "A16 Bionic"
+            },
+            {
+              "title": "Number of cores",
+              "value": 6
+            }
+            
+
+
+          ]
+        }
+      ],
+      "screen-size": 6.7,
+      "cpu": "Apple A16 Bionic",
+      "cores": 6,
+      "main-camera": "48-12-12MP",
+      "front-camera": "12MP",
+      "battery": 4323,
+      "resolution": [2796, 1290],
+      "refresh-rate": 120,
+      "density": 460,
+      "screen-type": "OLED",
+      "additional": ["Dynamic Island", "Always-On display", "HDR display", "True Tone", "Wide color (P3)"]
+    },
+
+    {
+      "id": 14,
+      "category": "iphone11",
+      "category_id": 1011,
+      "name": "Apple iPhone 11 128GB (MQ233)",
+      "price": 1437,
+      "favorite" : false,
+      "gallery": [""],
+      "old-price": 1537,
+      "colors" : ["#000000", "#781DBC", "#E10000", "#E1B000", "#E8E8E8"],
+      "storage": ["128GB", "256GB", "512GB", "1TB"],
+      "specs" : [
+        {
+          "title": "Screen",
+          "values" : [
+            {
+              "title": "Screen Diagonal",
+              "value": 6.7
+            },
+            {
+              "title": "The Screen Resolution",
+              "value": "2796x1290"
+            },
+            {
+              "title": "The Screen Pixel Density",
+              "value": "460ppi"
+            },
+
+            {
+              "title": "The Screen Refresh Rate",
+              "value": "120HZ"
+            },
+
+            {
+              "title": "Screen type",
+              "value": "OLED"
+            }
+
+
+          ]
+        },
+
+        {
+          "title": "Cpu",
+          "values" : [
+            {
+              "title": "CPU",
+              "value": "A16 Bionic"
+            },
+            {
+              "title": "Number of cores",
+              "value": 6
+            }
+            
+
+
+          ]
+        }
+      ],
+      "screen-size": 6.7,
+      "cpu": "Apple A16 Bionic",
+      "cores": 6,
+      "main-camera": "48-12-12MP",
+      "front-camera": "12MP",
+      "battery": 4323,
+      "resolution": [2796, 1290],
+      "refresh-rate": 120,
+      "density": 460,
+      "screen-type": "OLED",
+      "additional": ["Dynamic Island", "Always-On display", "HDR display", "True Tone", "Wide color (P3)"]
+    },
+
+    {
+      "id": 15,
+      "category": "iphone12",
+      "category_id": 1012,
+      "name": "Apple iPhone 12 128GB (MQ233)",
+      "price": 1537,
+      "favorite" : false,
+      "gallery": [""],
+      "old-price": 1537,
+      "colors" : ["#000000", "#781DBC", "#E10000", "#E1B000", "#E8E8E8"],
+      "storage": ["128GB", "256GB", "512GB", "1TB"],
+      "specs" : [
+        {
+          "title": "Screen",
+          "values" : [
+            {
+              "title": "Screen Diagonal",
+              "value": 6.7
+            },
+            {
+              "title": "The Screen Resolution",
+              "value": "2796x1290"
+            },
+            {
+              "title": "The Screen Pixel Density",
+              "value": "460ppi"
+            },
+
+            {
+              "title": "The Screen Refresh Rate",
+              "value": "120HZ"
+            },
+
+            {
+              "title": "Screen type",
+              "value": "OLED"
+            }
+
+
+          ]
+        },
+
+        {
+          "title": "Cpu",
+          "values" : [
+            {
+              "title": "CPU",
+              "value": "A16 Bionic"
+            },
+            {
+              "title": "Number of cores",
+              "value": 6
+            }
+            
+
+
+          ]
+        }
+      ],
+      "screen-size": 6.7,
+      "cpu": "Apple A16 Bionic",
+      "cores": 6,
+      "main-camera": "48-12-12MP",
+      "front-camera": "12MP",
+      "battery": 4323,
+      "resolution": [2796, 1290],
+      "refresh-rate": 120,
+      "density": 460,
+      "screen-type": "OLED",
+      "additional": ["Dynamic Island", "Always-On display", "HDR display", "True Tone", "Wide color (P3)"]
+    },
+
+    {
+      "id": 16,
+      "category": "iphone13",
+      "category_id": 1013,
+      "name": "Apple iPhone 13 128GB (MQ233)",
+      "price": 1637,
+      "favorite" : false,
+      "gallery": [""],
+      "old-price": 1537,
+      "colors" : ["#000000", "#781DBC", "#E10000", "#E1B000", "#E8E8E8"],
+      "storage": ["128GB", "256GB", "512GB", "1TB"],
+      "specs" : [
+        {
+          "title": "Screen",
+          "values" : [
+            {
+              "title": "Screen Diagonal",
+              "value": 6.7
+            },
+            {
+              "title": "The Screen Resolution",
+              "value": "2796x1290"
+            },
+            {
+              "title": "The Screen Pixel Density",
+              "value": "460ppi"
+            },
+
+            {
+              "title": "The Screen Refresh Rate",
+              "value": "120HZ"
+            },
+
+            {
+              "title": "Screen type",
+              "value": "OLED"
+            }
+
+
+          ]
+        },
+
+        {
+          "title": "Cpu",
+          "values" : [
+            {
+              "title": "CPU",
+              "value": "A16 Bionic"
+            },
+            {
+              "title": "Number of cores",
+              "value": 6
+            }
+            
+
+
+          ]
+        }
+      ],
+      "screen-size": 6.7,
+      "cpu": "Apple A16 Bionic",
+      "cores": 6,
+      "main-camera": "48-12-12MP",
+      "front-camera": "12MP",
+      "battery": 4323,
+      "resolution": [2796, 1290],
+      "refresh-rate": 120,
+      "density": 460,
+      "screen-type": "OLED",
+      "additional": ["Dynamic Island", "Always-On display", "HDR display", "True Tone", "Wide color (P3)"]
+    },
+
+    {
+      "id": 17,
+      "category": "iphone14",
+      "category_id": 1014,
+      "name": "Apple iPhone 14 128GB (MQ233)",
+      "price": 1737,
+      "favorite" : false,
+      "gallery": [""],
+      "old-price": 1537,
+      "colors" : ["#000000", "#781DBC", "#E10000", "#E1B000", "#E8E8E8"],
+      "storage": ["128GB", "256GB", "512GB", "1TB"],
+      "specs" : [
+        {
+          "title": "Screen",
+          "values" : [
+            {
+              "title": "Screen Diagonal",
+              "value": 6.7
+            },
+            {
+              "title": "The Screen Resolution",
+              "value": "2796x1290"
+            },
+            {
+              "title": "The Screen Pixel Density",
+              "value": "460ppi"
+            },
+
+            {
+              "title": "The Screen Refresh Rate",
+              "value": "120HZ"
+            },
+
+            {
+              "title": "Screen type",
+              "value": "OLED"
+            }
+
+
+          ]
+        },
+
+        {
+          "title": "Cpu",
+          "values" : [
+            {
+              "title": "CPU",
+              "value": "A16 Bionic"
+            },
+            {
+              "title": "Number of cores",
+              "value": 6
+            }
+            
+
+
+          ]
+        }
+      ],
+      "screen-size": 6.7,
+      "cpu": "Apple A16 Bionic",
+      "cores": 6,
+      "main-camera": "48-12-12MP",
+      "front-camera": "12MP",
+      "battery": 4323,
+      "resolution": [2796, 1290],
+      "refresh-rate": 120,
+      "density": 460,
+      "screen-type": "OLED",
+      "additional": ["Dynamic Island", "Always-On display", "HDR display", "True Tone", "Wide color (P3)"]
+    },
+
+    {
+      "id": 18,
+      "category": "iphone11pro",
+      "category_id": 10111,
+      "name": "Apple iPhone 11 Pro 128GB (MQ233)",
+      "price": 1498,
+      "favorite" : false,
+      "gallery": [""],
+      "old-price": 1537,
+      "colors" : ["#000000", "#781DBC", "#E10000", "#E1B000", "#E8E8E8"],
+      "storage": ["128GB", "256GB", "512GB", "1TB"],
+      "specs" : [
+        {
+          "title": "Screen",
+          "values" : [
+            {
+              "title": "Screen Diagonal",
+              "value": 6.7
+            },
+            {
+              "title": "The Screen Resolution",
+              "value": "2796x1290"
+            },
+            {
+              "title": "The Screen Pixel Density",
+              "value": "460ppi"
+            },
+
+            {
+              "title": "The Screen Refresh Rate",
+              "value": "120HZ"
+            },
+
+            {
+              "title": "Screen type",
+              "value": "OLED"
+            }
+
+
+          ]
+        },
+
+        {
+          "title": "Cpu",
+          "values" : [
+            {
+              "title": "CPU",
+              "value": "A16 Bionic"
+            },
+            {
+              "title": "Number of cores",
+              "value": 6
+            }
+            
+
+
+          ]
+        }
+      ],
+      "screen-size": 6.7,
+      "cpu": "Apple A16 Bionic",
+      "cores": 6,
+      "main-camera": "48-12-12MP",
+      "front-camera": "12MP",
+      "battery": 4323,
+      "resolution": [2796, 1290],
+      "refresh-rate": 120,
+      "density": 460,
+      "screen-type": "OLED",
+      "additional": ["Dynamic Island", "Always-On display", "HDR display", "True Tone", "Wide color (P3)"]
+    },
+
+
+    {
+      "id": 19,
+      "category": "iphone13pro",
+      "category_id": 10133,
+      "name": "Apple iPhone 13 Pro 128GB (MQ233)",
+      "price": 1697,
+      "favorite" : false,
+      "gallery": [""],
+      "old-price": 1537,
+      "colors" : ["#000000", "#781DBC", "#E10000", "#E1B000", "#E8E8E8"],
+      "storage": ["128GB", "256GB", "512GB", "1TB"],
+      "specs" : [
+        {
+          "title": "Screen",
+          "values" : [
+            {
+              "title": "Screen Diagonal",
+              "value": 6.7
+            },
+            {
+              "title": "The Screen Resolution",
+              "value": "2796x1290"
+            },
+            {
+              "title": "The Screen Pixel Density",
+              "value": "460ppi"
+            },
+
+            {
+              "title": "The Screen Refresh Rate",
+              "value": "120HZ"
+            },
+
+            {
+              "title": "Screen type",
+              "value": "OLED"
+            }
+
+
+          ]
+        },
+
+        {
+          "title": "Cpu",
+          "values" : [
+            {
+              "title": "CPU",
+              "value": "A16 Bionic"
+            },
+            {
+              "title": "Number of cores",
+              "value": 6
+            }
+            
+
+
+          ]
+        }
+      ],
+      "screen-size": 6.7,
+      "cpu": "Apple A16 Bionic",
+      "cores": 6,
+      "main-camera": "48-12-12MP",
+      "front-camera": "12MP",
+      "battery": 4323,
+      "resolution": [2796, 1290],
+      "refresh-rate": 120,
+      "density": 460,
+      "screen-type": "OLED",
+      "additional": ["Dynamic Island", "Always-On display", "HDR display", "True Tone", "Wide color (P3)"]
+    },
+
+    {
+      "id": 20,
+      "category": "iphone14",
+      "category_id": 1014,
+      "name": "Apple iPhone 14 128GB (MQ233)",
+      "price": 1897,
+      "favorite" : false,
+      "gallery": [""],
+      "old-price": 1537,
+      "colors" : ["#000000", "#781DBC", "#E10000", "#E1B000", "#E8E8E8"],
+      "storage": ["128GB", "256GB", "512GB", "1TB"],
+      "specs" : [
+        {
+          "title": "Screen",
+          "values" : [
+            {
+              "title": "Screen Diagonal",
+              "value": 6.7
+            },
+            {
+              "title": "The Screen Resolution",
+              "value": "2796x1290"
+            },
+            {
+              "title": "The Screen Pixel Density",
+              "value": "460ppi"
+            },
+
+            {
+              "title": "The Screen Refresh Rate",
+              "value": "120HZ"
+            },
+
+            {
+              "title": "Screen type",
+              "value": "OLED"
+            }
+
+
+          ]
+        },
+
+        {
+          "title": "Cpu",
+          "values" : [
+            {
+              "title": "CPU",
+              "value": "A16 Bionic"
+            },
+            {
+              "title": "Number of cores",
+              "value": 6
+            }
+            
+
+
+          ]
+        }
+      ],
+      "screen-size": 6.7,
+      "cpu": "Apple A16 Bionic",
+      "cores": 6,
+      "main-camera": "48-12-12MP",
+      "front-camera": "12MP",
+      "battery": 4323,
+      "resolution": [2796, 1290],
+      "refresh-rate": 120,
+      "density": 460,
+      "screen-type": "OLED",
+      "additional": ["Dynamic Island", "Always-On display", "HDR display", "True Tone", "Wide color (P3)"]
+    },
+
+    {
+      "id": 21,
+      "category": "iphone14pro",
+      "category_id": 10144,
+      "name": "Apple iPhone 14 Pro 128GB (MQ233)",
+      "price": 1937,
+      "favorite" : false,
+      "gallery": [""],
+      "old-price": 1537,
+      "colors" : ["#000000", "#781DBC", "#E10000", "#E1B000", "#E8E8E8"],
+      "storage": ["128GB", "256GB", "512GB", "1TB"],
+      "specs" : [
+        {
+          "title": "Screen",
+          "values" : [
+            {
+              "title": "Screen Diagonal",
+              "value": 6.7
+            },
+            {
+              "title": "The Screen Resolution",
+              "value": "2796x1290"
+            },
+            {
+              "title": "The Screen Pixel Density",
+              "value": "460ppi"
+            },
+
+            {
+              "title": "The Screen Refresh Rate",
+              "value": "120HZ"
+            },
+
+            {
+              "title": "Screen type",
+              "value": "OLED"
+            }
+
+
+          ]
+        },
+
+        {
+          "title": "Cpu",
+          "values" : [
+            {
+              "title": "CPU",
+              "value": "A16 Bionic"
+            },
+            {
+              "title": "Number of cores",
+              "value": 6
+            }
+            
+
+
+          ]
+        }
+      ],
+      "screen-size": 6.7,
+      "cpu": "Apple A16 Bionic",
+      "cores": 6,
+      "main-camera": "48-12-12MP",
+      "front-camera": "12MP",
+      "battery": 4323,
+      "resolution": "2796x1290",
+      "refresh-rate": 120,
+      "density": 460,
+      "screen-type": "OLED",
+      "additional": ["Dynamic Island", "Always-On display", "HDR display", "True Tone", "Wide color (P3)"]
+    }
+
+  ],
+
+  "iphone-images": [
+    {
+      "id": 1006,
+      "category" : "iphone6",
+      "images": ["iphones/iphones6/iphone6.png" ]
+    },
+    {
+      "id": 10077,
+      "category" : "iphone7plus",
+      "images": ["iphones/iphones7plus/iphone-7-plus.png", "iphones/iphones7plus/iphone7-pro.png"]
+    },
+    {
+      "id": 1008,
+      "category" : "iphone8",
+      "images": ["iphones/iphones8/ip8.png", "iphones/iphones8/iphone-8.png","iphones/iphones8/iphone8.png"]
+    },
+    {
+      "id": 1009,
+      "category" : "iphonex",
+      "images": ["iphones/iphonesx/iphone-x-pictures-45229.png", "iphones/iphonesx/iphonex.png"]
+    },
+    {
+      "id": 1010,
+      "category" : "iphonexr",
+      "images": ["iphones/iphonesxr/iphone-xr.png"]
+    },
+    {
+      "id": 1011,
+      "category" : "iphone11",
+      "images": ["iphones/iphones11/iphone-11.png","iphones/iphones11/White-iPhone-11.png"]
+    },
+    {
+      "id": 10111,
+      "category" : "iphone11pro",
+      "images": ["iphones/iphones11pro/iphone-11-promax.png"]
+    },
+    {
+      "id": 1012,
+      "category" : "iphone12",
+      "images": ["iphones/iphones12/Apple-iPhone-12-PNG-Download-Image.png"]
+    },
+    {
+      "id": 1013,
+      "category" : "iphone13",
+      "images": ["iphones/iphones13/Pink-iPhone-13-PNG-Images.png", "iphones/iphones13/iphone-13.png"]
+    },
+    {
+      "id": 10133,
+      "category" : "iphone13pro",
+      "images": ["iphones/iphones13pro/Pink-iPhone-13-PNG-HD-Image.png"]
+    },
+    {
+      "id": 1014,
+      "category" : "iphone14",
+      "images": ["iphones/iphones14/iPhone-14-PNG-Cliparts.png"]
+    },
+    {
+      "id": 10144,
+      "category" : "iphone14pro",
+      "images": ["iphones/14promax/iPhone-14-No-Background.png","iphones/14promax/iphone-14-promax.png","iphones/14promax/iPhone-14-Pro.png"]
+    }
+  ]
+}
