@@ -185,13 +185,21 @@
 			icon: battery
 		}
 	];
+
+	let activeColor = 0;
+	let activeStorage = 0;
+	let moreInfo = false;
 </script>
 
 <div class=" w-full min-h-screen font-inter">
-	<div class=" w-full font-inter py-[10vh] bg-white">
-		<div class=" lg:flex lg:justify-between space-x-10 lg:items-center w-[80%] mx-auto">
-			<div class=" w-[45%] max-h-[60vh] lg:space-x-10 lg:flex">
-				<div class=" w-[20%] max-h-fit justify-end flex flex-col items-center space-y-6">
+	<div class=" w-full font-inter py-[5vh] lg:py-[10vh] bg-white">
+		<div class=" lg:flex lg:justify-between lg:space-x-10 lg:items-center w-[80%] mx-auto">
+			<div
+				class=" w-full lg:w-[45%] flex flex-col-reverse max-h-[60vh] lg:space-x-10 pt-5 lg:pt-0 lg:flex items-center lg:flex-row"
+			>
+				<div
+					class=" lg:w-[20%] w-full max-h-fit lg:justify-end flex lg:flex-col pt-8 lg:pt-0 pb-14 lg:pb-0 justify-between flex-row items-center lg:space-y-6"
+				>
 					<img src={show} alt="" />
 					<img class=" opacity-40" src={show1} alt="" />
 					<img class=" opacity-40" src={show2} alt="" />
@@ -201,8 +209,8 @@
 					<img class=" w-full" src={iphone} alt="" />
 				</div>
 			</div>
-			<div class=" w-[55%] space-y-6">
-				<h1 class=" text-black-100 text-[40px] font-semibold font-inter">
+			<div class=" lg:w-[55%] space-y-6">
+				<h1 class=" text-black-100 text-left text-3xl lg:text-[40px] font-semibold font-inter">
 					{phoneDetail.name}
 				</h1>
 				<div class=" flex items-center space-x-4">
@@ -211,42 +219,54 @@
 				</div>
 				<div class=" flex items-center space-x-6">
 					<p class=" font-medium text-[15px]">Select color:</p>
-					<div class=" flex items-center space-x-2">
-						{#each phoneDetail.colors as col}
-							<div class={` w-8 h-8 rounded-[50%]`} style={`background-color: ${col};`}></div>
+					<div class=" flex items-center space-x-4">
+						{#each phoneDetail.colors as col, idx}
+							<button
+								on:click={() => (activeColor = idx)}
+								class={` w-8 h-8 relative  rounded-[50%]`}
+								style={`background-color: ${col}; `}
+							>
+								<div
+									style={`border-color: ${activeColor == idx ? col : '#fff'};`}
+									class=" -translate-x-1 -translate-y-1 w-10 h-10 border-2 transition-all duration-100 rounded-[50%]"
+								></div>
+							</button>
 						{/each}
 					</div>
 				</div>
 				<div class=" flex space-x-4">
-					{#each phoneDetail.storage as storage}
+					{#each phoneDetail.storage as storage, idx}
 						<button
-							class=" w-[95px] flex items-center justify-center border-gray-200 rounded-md py-3 border-2"
+							on:click={() => (activeStorage = idx)}
+							style={`border-color: ${activeStorage == idx ? '#000' : ''};`}
+							class=" w-[95px] transition-all duration-100 flex items-center justify-center border-gray-200 rounded-md py-3 text-sm lg:text-base border-2"
 							>{storage}</button
 						>
 					{/each}
-
-					
 				</div>
-				<div class=" grid grid-cols-3 gap-4 w-full">
+				<div class=" grid grid-cols-2 lg:grid-cols-3 gap-4 w-full">
 					{#each specs as spec}
 						<div
 							class=" space-x-3 items-center flex before: py-4 w-full bg-[#f4f4f4] rounded-lg px-5"
 						>
-							<img class=" w-5" src={spec.icon} alt="" />
+							<img class=" lg:w-5 w-4" src={spec.icon} alt="" />
 							<div>
-								<h2 class=" text-sm text-[#A7A7A7] font-semibold">{spec.title}</h2>
-								<h2 class=" text-sm text-[#4E4E4E] font-semibold">{spec.value}</h2>
+								<h2 class=" text-[12px] lg:text-sm text-[#A7A7A7] font-semibold">{spec.title}</h2>
+								<h2 class=" text-[12px] lg:text-sm text-[#4E4E4E] font-semibold">{spec.value}</h2>
 							</div>
 						</div>
 					{/each}
 				</div>
-				<div class=" flex items-center space-x-5">
-					<button class=" border-2 w-[50%] py-4 rounded-md border-black-100">Add to Wishlist</button
+				<div class=" flex lg:flex-row flex-col items-center lg:space-x-5 space-y-5 lg:space-y-0">
+					<button class=" border-2 w-full lg:w-[50%] py-4 rounded-md border-black-100"
+						>Add to Wishlist</button
 					>
-					<button class=" w-[50%] py-4 rounded-md text-white bg-black-100">Add to Cart</button>
+					<button class=" w-full lg:w-[50%] py-4 rounded-md text-white bg-black-100"
+						>Add to Cart</button
+					>
 				</div>
 				<div class=" flex items-center justify-between">
-					<div class=" flex space-x-4 items-center">
+					<div class=" flex lg:flex-row flex-col lg:space-y-0 space-y-4 lg:space-x-4 items-center">
 						<div class=" bg-[#F6F6F6] w-14 h-14 flex justify-center items-center rounded-lg">
 							<img src={truck} class=" w-6" alt="" />
 						</div>
@@ -255,7 +275,7 @@
 							<p class=" font-medium">1-2 days</p>
 						</div>
 					</div>
-					<div class=" flex space-x-4 items-center">
+					<div class=" flex lg:flex-row flex-col lg:space-y-0 space-y-4 lg:space-x-4 items-center">
 						<div class=" bg-[#F6F6F6] w-14 h-14 flex justify-center items-center rounded-lg">
 							<img src={store} class=" w-6" alt="" />
 						</div>
@@ -264,7 +284,7 @@
 							<p class=" font-medium">Active</p>
 						</div>
 					</div>
-					<div class=" flex space-x-4 items-center">
+					<div class=" flex lg:flex-row flex-col lg:space-y-0 space-y-4 lg:space-x-4 items-center">
 						<div class=" bg-[#F6F6F6] w-14 h-14 flex justify-center items-center rounded-lg">
 							<img src={verify} class=" w-6" alt="" />
 						</div>
@@ -278,7 +298,7 @@
 		</div>
 	</div>
 
-	<div class=" w-full bg-[#FAFAFA] py-[10vh]">
+	<div class=" w-full bg-[#FAFAFA] py-[5vh] lg:py-[10vh]">
 		<div class=" w-[80%] space-y-8 mx-auto bg-white py-10 px-8">
 			<h1 class=" font-medium text-2xl">Detail</h1>
 			<p class=" text-sm font-medium text-[#9D9D9D]">
@@ -311,11 +331,82 @@
 						<h1>6</h1>
 					</div>
 				</div>
+				{#if moreInfo}
+					<div>
+						<div class=" mt-8">
+							<h2 class=" text-[20px] font-medium">CAMERA</h2>
+							<div class=" space-y-4">
+								<div class=" py-2 flex justify-between border-b-2">
+									<h1>Main Camera</h1>
+									<h1>{phoneDetail['main-camera']}</h1>
+								</div>
+								<div class=" py-2 flex justify-between border-b-2">
+									<h1>Front Camera</h1>
+									<h1>{phoneDetail['front-camera']}</h1>
+								</div>
+							</div>
+						</div>
+
+						<div class=" mt-8">
+							<h2 class=" text-[20px] font-medium">Battery</h2>
+							<div class=" space-y-4">
+								<div class=" py-2 flex justify-between border-b-2">
+									<h1>Battery</h1>
+									<h1>{phoneDetail.battery}MAH</h1>
+								</div>
+								<div class=" py-2 flex justify-between border-b-2">
+									<h1>Battery Capacity</h1>
+									<h1>100</h1>
+								</div>
+							</div>
+						</div>
+
+						<div class=" mt-8">
+							<h2 class=" text-[20px] font-medium">Screen</h2>
+							<div class=" space-y-4">
+								<div class=" py-2 flex justify-between border-b-2">
+									<h1>Screen resolution</h1>
+									<h1>{phoneDetail['resolution'][0]} x {phoneDetail['resolution'][1]}</h1>
+								</div>
+								<div class=" py-2 flex justify-between border-b-2">
+									<h1>Refresh Rate</h1>
+									<h1>{phoneDetail['refresh-rate']}HZ</h1>
+								</div>
+								<div class=" py-2 flex justify-between border-b-2">
+									<h1>Pixel Density</h1>
+									<h1>{phoneDetail.density}PI</h1>
+								</div>
+								<div class=" py-2 flex justify-between border-b-2">
+									<h1>Screen Type</h1>
+									<h1>{phoneDetail['screen-type']}</h1>
+								</div>
+							</div>
+
+							<div class=" mt-8">
+								<h2 class=" text-[20px] font-medium">Additional Information</h2>
+								<div class=" space-y-4">
+									{#each phoneDetail['additional'] as info}
+										<div class=" py-2 flex justify-between border-b-2">
+											{info}
+										</div>
+									{/each}
+								</div>
+							</div>
+						</div>
+					</div>
+				{/if}
 			</div>
 
 			<div class=" w-full flex justify-center">
-				<button class=" border-2 border-[#545454] rounded-lg text-black-100 py-3 w-[20%] mx-auto">
-					VIEW MORE
+				<button
+					on:click={() => (moreInfo = !moreInfo)}
+					class=" border-2 border-[#545454] rounded-lg text-black-100 py-3 w-full lg:w-[20%] mx-auto"
+				>
+					VIEW {#if moreInfo}
+						LESS
+					{:else}
+						MORE
+					{/if}
 				</button>
 			</div>
 		</div>
@@ -363,3 +454,6 @@
 		</div>
 	</div>
 </div>
+
+<style>
+</style>

@@ -5,12 +5,20 @@
 	import '../app.pcss';
 	import { Label, Input, Button } from 'flowbite-svelte'
 	import Header from '../components/Header.svelte';
+	import type { LayoutData } from './$types';
+
+	
+	export let data: LayoutData;
+
+	
+	let auth: boolean = data.auth;
+
 	
 	
 </script>
 
 <div class=" font-quick flex flex-col   ">
-	<Header />
+	<Header auth={auth}  />
 
 	<div class=" z-50">
 		<slot />

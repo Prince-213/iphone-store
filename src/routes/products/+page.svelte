@@ -76,6 +76,7 @@
 									</div>
 
 									<button
+										on:click={() => goto(`/products/${item.id}`)}
 										class=" text-sm lg:text-base bg-black-100 py-3 w-[80%] mx-auto rounded-lg text-white font-medium"
 									>
 										Buy Now

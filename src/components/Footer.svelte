@@ -8,13 +8,13 @@
 </script>
 
 <footer class=" shadow-xl bottom-0  w-full bg-black-100 text-white py-12">
-    <div class=" w-[90%] space-y-8 lg:space-y-0 lg:flex-row flex-col flex justify-between  mx-auto">
-        <div class=" lg:w-[20%] space-y-5">
+    <div class=" w-[90%] space-y-8 lg:space-y-0 lg:flex-row flex-col flex justify-between items-center  mx-auto">
+        <div class=" lg:w-[20%] space-y-5 flex flex-col items-center lg:block">
             <img src={logo} alt="">
-            <p class=" font-medium text-gray-500">IJORTACS, an emerging open source access global academic journal in the field of science and technology, deals with all facets in the related fields. Its aim is to improve academic research impact through open source, for effective collaborative innovations and reshaping existing knowledge. </p>
-            <p>Copyright IJORTACS</p>
+            <p class=" font-medium text-gray-500">We are a residential interior design firm located in Portland. Our boutique-studio offers more than</p>
+            <p>Copyright &copy; CYBER</p>
         </div>
-        <div class=" lg:w-[20%] space-y-5">
+        <div class=" lg:w-[20%] space-y-5  flex flex-col items-center lg:block">
             <h2 class=" font-semibold">Get in Touch</h2>
             <div class=" flex space-x-3">
                 <MapLocationOutline />
@@ -30,24 +30,24 @@
                 <p>+1 386-688-3295</p>
             </div>
         </div>
-        <div class="lg:w-[20%] space-y-5">
+        <div class="lg:w-[20%] space-y-5  flex flex-col items-center lg:block">
             <div class=" flex space-x-6">
                 <FacebookSolid size="lg" />
                 <GithubSolid size="lg"/>
                 <TwitterSolid size="lg"/>
                 <TailwindSolid size="lg"/>
             </div>
-            <p class=" text-gray-500 font-medium">Lorem ipsum dolor sit amet,
+            <p class=" text-gray-500 font-medium text-center">Lorem ipsum dolor sit amet,
                 consec tetur adipiscing elit,
                 sed do eiusmod.</p>
         </div>
-        <div class=" lg:w-[20%] space-y-6">
+        <div class=" lg:w-[20%] space-y-6  flex flex-col items-center lg:block">
             <h1 class=" font-medium">Join Our Newsletter</h1>
             <div class=" space-y-2">
                 <Label class=" text-gray-500" defaultClass=" text-gray-500 font-medium text-base" >Your Email</Label>
                 <Input class="  border-black border-2 focus-within:border-blue-600 focus:border-blue-600 focus-visible:border-blue-600" type="text" placeholder="Enter your email"  />
             </div>
-            <Button class=" hover:bg-blue-600 bg-black text-white font-medium" >Subscribe</Button>
+            <Button class=" hover:bg-blue-600 bg-black border-blue-600 border-2 hover:border-0 transition-all duration-100 text-white font-medium" >Subscribe</Button>
         </div>
     </div>
 </footer>

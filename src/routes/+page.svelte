@@ -21,6 +21,7 @@
 		MessagesSolid,
 		QuoteSolid
 	} from 'flowbite-svelte-icons';
+	import { goto } from '$app/navigation';
 
 	const services = [
 		{
@@ -62,7 +63,7 @@
 						Created to change everything for the better. For every one.
 					</p>
 					<br />
-					<button class=" text-white py-5 border-2 rounded-md w-[50%] mt-8 border-white"
+					<button on:click={() => goto('/products')}  class=" text-white py-5 border-2 rounded-md w-[50%] mt-8 border-white"
 						>Shop Now</button
 					>
 				</div>
@@ -100,7 +101,7 @@
 			</div>
 		</div>
 	</section>
-	<section class=" w-full z-20 lg:h-[80vh] overflow-hidden relative bg-[#E2F3FF]">
+	<section class=" w-full z-20 lg:h-[85vh] overflow-hidden relative bg-[#E2F3FF]">
 		<h1
 			class=" -z-10 text-[#D9EFFF] absolute lg:-translate-y-[.2em] -translate-y-[.3em] translate-x-[.05em] lg:translate-x-[.25em] text-[40em] -rotate-45 font-bold font-poppins"
 		>
@@ -167,7 +168,7 @@
 			<p class=" text-xl text-center text-gray-600 font-semibold">
 				Created to change everything for the better. For every one.
 			</p>
-			<button class=" text-white py-5 border-2 rounded-md w-[50%] mt-14 border-white"
+			<button on:click={() => goto('/products')}  class=" text-white py-5 border-2 rounded-md w-[50%] mt-14 border-white"
 				>Shop Now</button
 			>
 		</div>

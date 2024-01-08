@@ -11,4 +11,4 @@ function createCount() {
 	};
 }
 
-export const auth = createCount();
+export const auths = createCount();
