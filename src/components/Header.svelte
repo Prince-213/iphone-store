@@ -1,4 +1,5 @@
 <script lang="ts">
+	
 	import logo from '$lib/assets/logo/Frame 2.png';
 	import {
 		HeartOutline,
@@ -19,23 +20,27 @@
 		DropdownItem
 	} from 'flowbite-svelte';
 	import person from '$lib/assets/images/pexels-andrea-piacquadio-837358.jpg';
+	
 
 	import { LogOutIcon } from 'lucide-svelte';
 
 	export let auth: boolean;
+	export let userName: string;
+	export let userEmail: string;
+	export let userAvatar: string;
 
 	import lottie, { type AnimationItem } from 'lottie-web';
 	import animationData from '$lib/assets/lottie/Animation - 1699732843324.json';
 	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
+	import { goto, invalidateAll } from '$app/navigation';
 	import { fade } from 'svelte/transition';
 	import { page } from '$app/stores';
+	import { supabase } from '$lib/supabaseClient';
+	import { redirect } from '@sveltejs/kit';
 
 	$: activePath = $page.url.pathname;
 
 	let like = false;
-
-	
 
 	let animationContainer: HTMLButtonElement;
 
@@ -59,6 +64,15 @@
 
 	let lastFrame: number;
 
+	const signOut = async () => {
+		
+	
+		throw redirect(307, '/signout')
+		invalidateAll();
+		
+		
+	};
+
 	onMount(() => {
 		menuAnimation = lottie.loadAnimation({
 			container: animationContainer,
@@ -71,6 +85,8 @@
 
 		menuAnimation.goToAndStop(0, true);
 	});
+
+	
 </script>
 
 <div class=" top-0 w-full">
@@ -114,7 +130,7 @@
 					</button>
 					<div class=" flex items-center space-x-10 text-[#000]">
 						{#if auth}
-							<button on:click={() => goto('/wishlist')}  class="relative">
+							<button on:click={() => goto('/wishlist')} class="relative">
 								<HeartOutline strokeWidth="1.5" size="xl" class="text-black-100 dark:text-white" />
 								<span class="sr-only">Notifications</span>
 								<Indicator
@@ -126,11 +142,13 @@
 								>
 							</button>
 						{:else}
-							<button on:click={() => goto('/wishlist')}  class=" "><HeartOutline size="lg" strokeWidth="1.3" /></button>
+							<button on:click={() => goto('/wishlist')} class=" "
+								><HeartOutline size="lg" strokeWidth="1.3" /></button
+							>
 						{/if}
 
 						{#if auth}
-							<button on:click={() => goto('/cart')}  class="relative">
+							<button on:click={() => goto('/cart')} class="relative">
 								<CartOutline strokeWidth="1.5" size="xl" class="text-black-100 dark:text-white" />
 								<span class="sr-only">Notifications</span>
 								<Indicator
@@ -142,23 +160,25 @@
 								>
 							</button>
 						{:else}
-							<button on:click={() => goto('/cart')}  class=" "><CartOutline size="lg" strokeWidth="1.3" /></button>
+							<button on:click={() => goto('/cart')} class=" "
+								><CartOutline size="lg" strokeWidth="1.3" /></button
+							>
 						{/if}
 
 						{#if auth}
 							<div class=" drop">
-								<Button pill color="light" id="avatar_with_name" class="!p-1">
-									<Avatar src={person} class="me-2" />
-									Bonnie Green
+								<Button pill color="light" id="avatar_with_name" class=" pl-1 pt-1 pb-1 pr-2">
+									<Avatar src={`https://hnuabzvdekpcvstajmkn.supabase.co/storage/v1/object/public/avatars/public/${userAvatar}`} class="me-2" />
+									{userName}
 								</Button>
 								<Dropdown class=" drop z-50" triggeredBy="#avatar_with_name">
 									<div slot="header" class="px-4 py-2">
-										<span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
-										<span class="block truncate text-sm font-medium">name@flowbite.com</span>
+										<span class="block text-sm text-gray-900 dark:text-white">{userName}</span>
+										<span class="block truncate text-sm font-medium">{userEmail}</span>
 									</div>
 
 									<DropdownItem slot="footer">
-										<button class=" flex space-x-2 items-center"
+										<button on:click={() => goto('/signout')}  class=" flex space-x-2 hreitems-center"
 											><LogOutIcon />
 											<p>Sign Out</p></button
 										>
@@ -174,7 +194,7 @@
 			<div class=" lg:hidden flex items-center lg:space-x-6">
 				<div class=" flex items-center mr-10 space-x-5">
 					{#if auth}
-						<button on:click={() => goto('/wishlist')}  class="relative">
+						<button on:click={() => goto('/wishlist')} class="relative">
 							<HeartOutline strokeWidth="1.4" size="lg" class="text-black-100 dark:text-white" />
 							<span class="sr-only">Notifications</span>
 							<Indicator
@@ -186,11 +206,13 @@
 							>
 						</button>
 					{:else}
-						<button on:click={() => goto('/wishlist')}  class=" "><HeartOutline size="lg" strokeWidth="1.3" /></button>
+						<button on:click={() => goto('/wishlist')} class=" "
+							><HeartOutline size="lg" strokeWidth="1.3" /></button
+						>
 					{/if}
 
 					{#if auth}
-						<button on:click={() => goto('/cart')}  class="relative">
+						<button on:click={() => goto('/cart')} class="relative">
 							<CartOutline strokeWidth="1.4" size="lg" class="text-black-100 dark:text-white" />
 							<span class="sr-only">Notifications</span>
 							<Indicator
@@ -202,7 +224,9 @@
 							>
 						</button>
 					{:else}
-						<button on:click={() => goto('/cart')}  class=" "><CartOutline size="lg" strokeWidth="1.3" /></button>
+						<button on:click={() => goto('/cart')} class=" "
+							><CartOutline size="lg" strokeWidth="1.3" /></button
+						>
 					{/if}
 				</div>
 
@@ -248,20 +272,20 @@
 				<div>
 					{#if auth}
 						<div class=" drop">
-							<Button pill color="light" id="avatar_with_name" class="!p-1">
-								<Avatar src={person} class="me-2" />
-								Bonnie Green
+							<Button pill color="light" id="avatar_with_name" class="pl-1 pt-1 pb-1 pr-2">
+								<Avatar src={`https://hnuabzvdekpcvstajmkn.supabase.co/storage/v1/object/public/avatars/public/${userAvatar}`} class="me-2" />
+								{userName}
 							</Button>
-							<Dropdown   class=" drop z-50" triggeredBy="#avatar_with_name">
+							<Dropdown class=" drop z-50" triggeredBy="#avatar_with_name">
 								<div slot="header" class="px-4 py-2">
-									<span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
-									<span class="block truncate text-sm font-medium">name@flowbite.com</span>
+									<span class="block text-sm text-gray-900 dark:text-white">{userName}</span>
+									<span class="block truncate text-sm font-medium">{userEmail}</span>
 								</div>
 
 								<DropdownItem slot="footer">
-									<button class=" flex space-x-2 items-center"
-										><LogOutIcon />
-										<p>Sign Out</p></button
+									<button on:click={() => goto('/signout')}  class=" flex space-x-2 items-center"
+											><LogOutIcon />
+											<p>Sign Out</p></button
 									>
 								</DropdownItem>
 							</Dropdown>

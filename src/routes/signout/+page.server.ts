@@ -10,8 +10,12 @@ import { goto } from '$app/navigation';
 export const load = (async ({ cookies, url }) => {
 
 
-    if (!cookies.get("token")) {
-        throw redirect(307, `/login?redirectTo=${url.pathname}`)
+    if (cookies.get("token")) {
+        cookies.delete('token', {path: '/'})
+        cookies.delete('userName', {path: '/'})
+        cookies.delete('userEmail', {path: '/'})
+        cookies.delete('userAvatar', {path: '/'})
+        
     }
     return {};
 }) satisfies PageServerLoad;

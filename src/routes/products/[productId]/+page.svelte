@@ -21,6 +21,12 @@
 
 	$: phoneDetail = data.phone;
 
+	import { reveal } from 'svelte-reveal';
+
+	import { navigating } from '$app/stores';
+
+	import Loader from '../../../components/Loader.svelte';
+
 	const phones = [
 		{
 			id: 1,
@@ -191,269 +197,281 @@
 	let moreInfo = false;
 </script>
 
-<div class=" w-full min-h-screen font-inter">
-	<div class=" w-full font-inter py-[5vh] lg:py-[10vh] bg-white">
-		<div class=" lg:flex lg:justify-between lg:space-x-10 lg:items-center w-[80%] mx-auto">
-			<div
-				class=" w-full lg:w-[45%] flex flex-col-reverse max-h-[60vh] lg:space-x-10 pt-5 lg:pt-0 lg:flex items-center lg:flex-row"
-			>
-				<div
-					class=" lg:w-[20%] w-full max-h-fit lg:justify-end flex lg:flex-col pt-8 lg:pt-0 pb-14 lg:pb-0 justify-between flex-row items-center lg:space-y-6"
+{#if $navigating}
+	<div use:reveal={{ transition: 'fade' }}>
+		<Loader />
+	</div>
+{:else}
+	<div use:reveal={{ transition: 'fade', opacity: 1 }}  class=" w-full min-h-screen font-inter">
+		<div class=" w-full font-inter py-[5vh] lg:py-[10vh] bg-white">
+			<div class=" lg:flex lg:justify-between lg:space-x-10 lg:items-center w-[80%] mx-auto">
+				<div use:reveal={{ transition: 'fly', duration: 400 }}
+					class=" w-full lg:w-[45%] flex flex-col-reverse max-h-[60vh] lg:space-x-10 pt-5 lg:pt-0 lg:flex items-center lg:flex-row"
 				>
-					<img src={show} alt="" />
-					<img class=" opacity-40" src={show1} alt="" />
-					<img class=" opacity-40" src={show2} alt="" />
-					<img class=" opacity-40" src={show3} alt="" />
+					<div
+						class=" lg:w-[20%] w-full max-h-fit lg:justify-end flex lg:flex-col pt-8 lg:pt-0 pb-14 lg:pb-0 justify-between flex-row items-center lg:space-y-6"
+					>
+						<img src={show} alt="" />
+						<img class=" opacity-40" src={show1} alt="" />
+						<img class=" opacity-40" src={show2} alt="" />
+						<img class=" opacity-40" src={show3} alt="" />
+					</div>
+					<div class=" w-[75%]">
+						<img class=" w-full" src={iphone} alt="" />
+					</div>
 				</div>
-				<div class=" w-[75%]">
-					<img class=" w-full" src={iphone} alt="" />
-				</div>
-			</div>
-			<div class=" lg:w-[55%] space-y-6">
-				<h1 class=" text-black-100 text-left text-3xl lg:text-[40px] font-semibold font-inter">
-					{phoneDetail.name}
-				</h1>
-				<div class=" flex items-center space-x-4">
-					<h2 class=" text-[32px] font-medium">${phoneDetail.price}</h2>
-					<del class=" text-[#A0A0A0] text-[24px]">${phoneDetail['old-price']}</del>
-				</div>
-				<div class=" flex items-center space-x-6">
-					<p class=" font-medium text-[15px]">Select color:</p>
+				<div use:reveal={{ transition: 'slide', duration: 400 }}  class=" lg:w-[55%] space-y-6">
+					<h1 class=" text-black-100 text-left text-3xl lg:text-[40px] font-semibold font-inter">
+						{phoneDetail.name}
+					</h1>
 					<div class=" flex items-center space-x-4">
-						{#each phoneDetail.colors as col, idx}
+						<h2 class=" text-[32px] font-medium">${phoneDetail.price}</h2>
+						<del class=" text-[#A0A0A0] text-[24px]">${phoneDetail['old-price']}</del>
+					</div>
+					<div class=" flex items-center space-x-6">
+						<p class=" font-medium text-[15px]">Select color:</p>
+						<div class=" flex items-center space-x-4">
+							{#each phoneDetail.colors as col, idx}
+								<button
+									on:click={() => (activeColor = idx)}
+									class={` w-8 h-8 relative  rounded-[50%]`}
+									style={`background-color: ${col}; `}
+								>
+									<div
+										style={`border-color: ${activeColor == idx ? col : '#fff'};`}
+										class=" -translate-x-1 -translate-y-1 w-10 h-10 border-2 transition-all duration-100 rounded-[50%]"
+									></div>
+								</button>
+							{/each}
+						</div>
+					</div>
+					<div class=" flex space-x-4">
+						{#each phoneDetail.storage as storage, idx}
 							<button
-								on:click={() => (activeColor = idx)}
-								class={` w-8 h-8 relative  rounded-[50%]`}
-								style={`background-color: ${col}; `}
+								on:click={() => (activeStorage = idx)}
+								style={`border-color: ${activeStorage == idx ? '#000' : ''};`}
+								class=" w-[95px] transition-all duration-100 flex items-center justify-center border-gray-200 rounded-md py-3 text-sm lg:text-base border-2"
+								>{storage}</button
 							>
-								<div
-									style={`border-color: ${activeColor == idx ? col : '#fff'};`}
-									class=" -translate-x-1 -translate-y-1 w-10 h-10 border-2 transition-all duration-100 rounded-[50%]"
-								></div>
-							</button>
 						{/each}
 					</div>
-				</div>
-				<div class=" flex space-x-4">
-					{#each phoneDetail.storage as storage, idx}
-						<button
-							on:click={() => (activeStorage = idx)}
-							style={`border-color: ${activeStorage == idx ? '#000' : ''};`}
-							class=" w-[95px] transition-all duration-100 flex items-center justify-center border-gray-200 rounded-md py-3 text-sm lg:text-base border-2"
-							>{storage}</button
+					<div class=" grid grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+						{#each specs as spec}
+							<div
+								class=" space-x-3 items-center flex before: py-4 w-full bg-[#f4f4f4] rounded-lg px-5"
+							>
+								<img class=" lg:w-5 w-4" src={spec.icon} alt="" />
+								<div>
+									<h2 class=" text-[12px] lg:text-sm text-[#A7A7A7] font-semibold">{spec.title}</h2>
+									<h2 class=" text-[12px] lg:text-sm text-[#4E4E4E] font-semibold">{spec.value}</h2>
+								</div>
+							</div>
+						{/each}
+					</div>
+					<div class=" flex lg:flex-row flex-col items-center lg:space-x-5 space-y-5 lg:space-y-0">
+						<button class=" border-2 w-full lg:w-[50%] py-4 rounded-md border-black-100"
+							>Add to Wishlist</button
 						>
-					{/each}
-				</div>
-				<div class=" grid grid-cols-2 lg:grid-cols-3 gap-4 w-full">
-					{#each specs as spec}
+						<button class=" w-full lg:w-[50%] py-4 rounded-md text-white bg-black-100"
+							>Add to Cart</button
+						>
+					</div>
+					<div class=" flex items-center justify-between">
 						<div
-							class=" space-x-3 items-center flex before: py-4 w-full bg-[#f4f4f4] rounded-lg px-5"
+							class=" flex lg:flex-row flex-col lg:space-y-0 space-y-4 lg:space-x-4 items-center"
 						>
-							<img class=" lg:w-5 w-4" src={spec.icon} alt="" />
-							<div>
-								<h2 class=" text-[12px] lg:text-sm text-[#A7A7A7] font-semibold">{spec.title}</h2>
-								<h2 class=" text-[12px] lg:text-sm text-[#4E4E4E] font-semibold">{spec.value}</h2>
+							<div class=" bg-[#F6F6F6] w-14 h-14 flex justify-center items-center rounded-lg">
+								<img src={truck} class=" w-6" alt="" />
+							</div>
+							<div class=" text-sm space-y-1">
+								<h1 class=" text-[#717171] font-medium">Free delivey</h1>
+								<p class=" font-medium">1-2 days</p>
 							</div>
 						</div>
-					{/each}
-				</div>
-				<div class=" flex lg:flex-row flex-col items-center lg:space-x-5 space-y-5 lg:space-y-0">
-					<button class=" border-2 w-full lg:w-[50%] py-4 rounded-md border-black-100"
-						>Add to Wishlist</button
-					>
-					<button class=" w-full lg:w-[50%] py-4 rounded-md text-white bg-black-100"
-						>Add to Cart</button
-					>
-				</div>
-				<div class=" flex items-center justify-between">
-					<div class=" flex lg:flex-row flex-col lg:space-y-0 space-y-4 lg:space-x-4 items-center">
-						<div class=" bg-[#F6F6F6] w-14 h-14 flex justify-center items-center rounded-lg">
-							<img src={truck} class=" w-6" alt="" />
+						<div
+							class=" flex lg:flex-row flex-col lg:space-y-0 space-y-4 lg:space-x-4 items-center"
+						>
+							<div class=" bg-[#F6F6F6] w-14 h-14 flex justify-center items-center rounded-lg">
+								<img src={store} class=" w-6" alt="" />
+							</div>
+							<div class=" text-sm space-y-1">
+								<h1 class=" text-[#717171] font-medium">In Stock</h1>
+								<p class=" font-medium">Active</p>
+							</div>
 						</div>
-						<div class=" text-sm space-y-1">
-							<h1 class=" text-[#717171] font-medium">Free delivey</h1>
-							<p class=" font-medium">1-2 days</p>
-						</div>
-					</div>
-					<div class=" flex lg:flex-row flex-col lg:space-y-0 space-y-4 lg:space-x-4 items-center">
-						<div class=" bg-[#F6F6F6] w-14 h-14 flex justify-center items-center rounded-lg">
-							<img src={store} class=" w-6" alt="" />
-						</div>
-						<div class=" text-sm space-y-1">
-							<h1 class=" text-[#717171] font-medium">In Stock</h1>
-							<p class=" font-medium">Active</p>
-						</div>
-					</div>
-					<div class=" flex lg:flex-row flex-col lg:space-y-0 space-y-4 lg:space-x-4 items-center">
-						<div class=" bg-[#F6F6F6] w-14 h-14 flex justify-center items-center rounded-lg">
-							<img src={verify} class=" w-6" alt="" />
-						</div>
-						<div class=" text-sm space-y-1">
-							<h1 class=" text-[#717171] font-medium">Guarantee</h1>
-							<p class=" font-medium">1 year</p>
+						<div
+							class=" flex lg:flex-row flex-col lg:space-y-0 space-y-4 lg:space-x-4 items-center"
+						>
+							<div class=" bg-[#F6F6F6] w-14 h-14 flex justify-center items-center rounded-lg">
+								<img src={verify} class=" w-6" alt="" />
+							</div>
+							<div class=" text-sm space-y-1">
+								<h1 class=" text-[#717171] font-medium">Guarantee</h1>
+								<p class=" font-medium">1 year</p>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class=" w-full bg-[#FAFAFA] py-[5vh] lg:py-[10vh]">
-		<div class=" w-[80%] space-y-8 mx-auto bg-white py-10 px-8">
-			<h1 class=" font-medium text-2xl">Detail</h1>
-			<p class=" text-sm font-medium text-[#9D9D9D]">
-				Just as a book is judged by its cover, the first thing you notice when you pick up a modern
-				smartphone is the display. Nothing surprising, because advanced technologies allow you to
-				practically level the display frames and cutouts for the front camera and speaker, leaving
-				no room for bold design solutions. And how good that in such realities Apple everything is
-				fine with displays. Both critics and mass consumers always praise the quality of the picture
-				provided by the products of the Californian brand. And last year's 6.7-inch Retina panels,
-				which had ProMotion, caused real admiration for many.
-			</p>
+		<div class=" w-full bg-[#FAFAFA] py-[5vh] lg:py-[10vh]">
+			<div class=" w-[80%] space-y-8 mx-auto bg-white py-10 px-8">
+				<h1 class=" font-medium text-2xl">Detail</h1>
+				<p class=" text-sm font-medium text-[#9D9D9D]">
+					Just as a book is judged by its cover, the first thing you notice when you pick up a
+					modern smartphone is the display. Nothing surprising, because advanced technologies allow
+					you to practically level the display frames and cutouts for the front camera and speaker,
+					leaving no room for bold design solutions. And how good that in such realities Apple
+					everything is fine with displays. Both critics and mass consumers always praise the
+					quality of the picture provided by the products of the Californian brand. And last year's
+					6.7-inch Retina panels, which had ProMotion, caused real admiration for many.
+				</p>
 
-			<div class=" w-full">
-				<h2 class=" text-[20px] font-medium">Screen</h2>
-				<div class=" py-2 flex justify-between border-b-2">
-					<h1>Screen diagonal</h1>
-					<h1>6.7</h1>
-				</div>
-			</div>
-
-			<div class=" w-full">
-				<h2 class=" text-[20px] font-medium">CPU</h2>
-				<div class=" space-y-4">
+				<div class=" w-full">
+					<h2 class=" text-[20px] font-medium">Screen</h2>
 					<div class=" py-2 flex justify-between border-b-2">
-						<h1>CPU</h1>
-						<h1>A16 Bionic</h1>
-					</div>
-					<div class=" py-2 flex justify-between border-b-2">
-						<h1>Number of cores</h1>
-						<h1>6</h1>
+						<h1>Screen diagonal</h1>
+						<h1>6.7</h1>
 					</div>
 				</div>
-				{#if moreInfo}
-					<div>
-						<div class=" mt-8">
-							<h2 class=" text-[20px] font-medium">CAMERA</h2>
-							<div class=" space-y-4">
-								<div class=" py-2 flex justify-between border-b-2">
-									<h1>Main Camera</h1>
-									<h1>{phoneDetail['main-camera']}</h1>
-								</div>
-								<div class=" py-2 flex justify-between border-b-2">
-									<h1>Front Camera</h1>
-									<h1>{phoneDetail['front-camera']}</h1>
-								</div>
-							</div>
-						</div>
 
-						<div class=" mt-8">
-							<h2 class=" text-[20px] font-medium">Battery</h2>
-							<div class=" space-y-4">
-								<div class=" py-2 flex justify-between border-b-2">
-									<h1>Battery</h1>
-									<h1>{phoneDetail.battery}MAH</h1>
-								</div>
-								<div class=" py-2 flex justify-between border-b-2">
-									<h1>Battery Capacity</h1>
-									<h1>100</h1>
-								</div>
-							</div>
+				<div class=" w-full">
+					<h2 class=" text-[20px] font-medium">CPU</h2>
+					<div class=" space-y-4">
+						<div class=" py-2 flex justify-between border-b-2">
+							<h1>CPU</h1>
+							<h1>A16 Bionic</h1>
 						</div>
-
-						<div class=" mt-8">
-							<h2 class=" text-[20px] font-medium">Screen</h2>
-							<div class=" space-y-4">
-								<div class=" py-2 flex justify-between border-b-2">
-									<h1>Screen resolution</h1>
-									<h1>{phoneDetail['resolution'][0]} x {phoneDetail['resolution'][1]}</h1>
-								</div>
-								<div class=" py-2 flex justify-between border-b-2">
-									<h1>Refresh Rate</h1>
-									<h1>{phoneDetail['refresh-rate']}HZ</h1>
-								</div>
-								<div class=" py-2 flex justify-between border-b-2">
-									<h1>Pixel Density</h1>
-									<h1>{phoneDetail.density}PI</h1>
-								</div>
-								<div class=" py-2 flex justify-between border-b-2">
-									<h1>Screen Type</h1>
-									<h1>{phoneDetail['screen-type']}</h1>
+						<div class=" py-2 flex justify-between border-b-2">
+							<h1>Number of cores</h1>
+							<h1>6</h1>
+						</div>
+					</div>
+					{#if moreInfo}
+						<div>
+							<div class=" mt-8">
+								<h2 class=" text-[20px] font-medium">CAMERA</h2>
+								<div class=" space-y-4">
+									<div class=" py-2 flex justify-between border-b-2">
+										<h1>Main Camera</h1>
+										<h1>{phoneDetail['main-camera']}</h1>
+									</div>
+									<div class=" py-2 flex justify-between border-b-2">
+										<h1>Front Camera</h1>
+										<h1>{phoneDetail['front-camera']}</h1>
+									</div>
 								</div>
 							</div>
 
 							<div class=" mt-8">
-								<h2 class=" text-[20px] font-medium">Additional Information</h2>
+								<h2 class=" text-[20px] font-medium">Battery</h2>
 								<div class=" space-y-4">
-									{#each phoneDetail['additional'] as info}
-										<div class=" py-2 flex justify-between border-b-2">
-											{info}
-										</div>
-									{/each}
+									<div class=" py-2 flex justify-between border-b-2">
+										<h1>Battery</h1>
+										<h1>{phoneDetail.battery}MAH</h1>
+									</div>
+									<div class=" py-2 flex justify-between border-b-2">
+										<h1>Battery Capacity</h1>
+										<h1>100</h1>
+									</div>
+								</div>
+							</div>
+
+							<div class=" mt-8">
+								<h2 class=" text-[20px] font-medium">Screen</h2>
+								<div class=" space-y-4">
+									<div class=" py-2 flex justify-between border-b-2">
+										<h1>Screen resolution</h1>
+										<h1>{phoneDetail['resolution'][0]} x {phoneDetail['resolution'][1]}</h1>
+									</div>
+									<div class=" py-2 flex justify-between border-b-2">
+										<h1>Refresh Rate</h1>
+										<h1>{phoneDetail['refresh-rate']}HZ</h1>
+									</div>
+									<div class=" py-2 flex justify-between border-b-2">
+										<h1>Pixel Density</h1>
+										<h1>{phoneDetail.density}PI</h1>
+									</div>
+									<div class=" py-2 flex justify-between border-b-2">
+										<h1>Screen Type</h1>
+										<h1>{phoneDetail['screen-type']}</h1>
+									</div>
+								</div>
+
+								<div class=" mt-8">
+									<h2 class=" text-[20px] font-medium">Additional Information</h2>
+									<div class=" space-y-4">
+										{#each phoneDetail['additional'] as info}
+											<div class=" py-2 flex justify-between border-b-2">
+												{info}
+											</div>
+										{/each}
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				{/if}
-			</div>
-
-			<div class=" w-full flex justify-center">
-				<button
-					on:click={() => (moreInfo = !moreInfo)}
-					class=" border-2 border-[#545454] rounded-lg text-black-100 py-3 w-full lg:w-[20%] mx-auto"
-				>
-					VIEW {#if moreInfo}
-						LESS
-					{:else}
-						MORE
 					{/if}
-				</button>
+				</div>
+
+				<div class=" w-full flex justify-center">
+					<button
+						on:click={() => (moreInfo = !moreInfo)}
+						class=" border-2 border-[#545454] rounded-lg text-black-100 py-3 w-full lg:w-[20%] mx-auto"
+					>
+						VIEW {#if moreInfo}
+							LESS
+						{:else}
+							MORE
+						{/if}
+					</button>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class=" w-full py-[10vh]">
-		<div class=" w-[80%] space-y-4 mx-auto">
-			<h1 class=" text-2xl font-medium">Related Products</h1>
-			<div class=" grid grid-cols-2 lg:grid-cols-4 gap-5">
-				{#each phones as item}
-					<div class=" flex flex-col px-2 lg:px-4 py-4 lg:py-8 rounded-md w-full bg-grey-100">
-						<div class=" w-full flex justify-end">
-							{#if !like}
-								<button transition:scale on:click={() => (item.favorite = true)}>
-									<HeartOutline size="xl" strokeWidth="1.2" class="  text-grey-200" />
-								</button>
-							{:else}
-								<button transition:scale on:click={() => (item.favorite = false)}>
-									<HeartSolid size="xl" strokeWidth="1.2" class="  text-heart-100" />
-								</button>
-							{/if}
-						</div>
+		<div class=" w-full py-[10vh]">
+			<div class=" w-[80%] space-y-4 mx-auto">
+				<h1 class=" text-2xl font-medium">Related Products</h1>
+				<div class=" grid grid-cols-2 lg:grid-cols-4 gap-5">
+					{#each phones as item}
+						<div class=" flex flex-col px-2 lg:px-4 py-4 lg:py-8 rounded-md w-full bg-grey-100">
+							<div class=" w-full flex justify-end">
+								{#if !like}
+									<button transition:scale on:click={() => (item.favorite = true)}>
+										<HeartOutline size="xl" strokeWidth="1.2" class="  text-grey-200" />
+									</button>
+								{:else}
+									<button transition:scale on:click={() => (item.favorite = false)}>
+										<HeartSolid size="xl" strokeWidth="1.2" class="  text-heart-100" />
+									</button>
+								{/if}
+							</div>
 
-						<div class="  mt-4 space-y-4 flex flex-col justify-between items-center">
-							<img src={show} class=" md:max-h-48 max-h-[7.5rem] lg:max-h-48" alt="" />
+							<div class="  mt-4 space-y-4 flex flex-col justify-between items-center">
+								<img src={show} class=" md:max-h-48 max-h-[7.5rem] lg:max-h-48" alt="" />
 
-							<div class="  h-[50%] space-y-2 flex flex-col justify-end text-center w-full">
-								<div class=" text-center space-y-2">
-									<h2 class=" text-sm lg:text-[18px] w-[90%] mx-auto font-medium text-center">
-										{item.name}
-									</h2>
-									<h1 class=" text-lg lg:text-2xl font-semibold">${item.price}</h1>
+								<div class="  h-[50%] space-y-2 flex flex-col justify-end text-center w-full">
+									<div class=" text-center space-y-2">
+										<h2 class=" text-sm lg:text-[18px] w-[90%] mx-auto font-medium text-center">
+											{item.name}
+										</h2>
+										<h1 class=" text-lg lg:text-2xl font-semibold">${item.price}</h1>
+									</div>
+
+									<button
+										class=" text-sm lg:text-base bg-black-100 py-3 w-[80%] mx-auto rounded-lg text-white font-medium"
+									>
+										Buy Now
+									</button>
 								</div>
-
-								<button
-									class=" text-sm lg:text-base bg-black-100 py-3 w-[80%] mx-auto rounded-lg text-white font-medium"
-								>
-									Buy Now
-								</button>
 							</div>
 						</div>
-					</div>
-				{/each}
+					{/each}
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+{/if}
 
 <style>
 </style>

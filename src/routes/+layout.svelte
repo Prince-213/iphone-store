@@ -1,31 +1,49 @@
 <script lang="ts">
-	import logo  from '$lib/assets/logo/Frame 2.png';
+	import logo from '$lib/assets/logo/Frame 2.png';
 	import Footer from '../components/Footer.svelte';
-	import { MapLocationOutline, EnvelopeOutline, PhoneOutline, FacebookSolid, TwitterSolid, TailwindSolid, GithubSolid } from "flowbite-svelte-icons"
+	import {
+		MapLocationOutline,
+		EnvelopeOutline,
+		PhoneOutline,
+		FacebookSolid,
+		TwitterSolid,
+		TailwindSolid,
+		GithubSolid
+	} from 'flowbite-svelte-icons';
 	import '../app.pcss';
-	import { Label, Input, Button } from 'flowbite-svelte'
+	import { Label, Input, Button } from 'flowbite-svelte';
 	import Header from '../components/Header.svelte';
 	import type { LayoutData } from './$types';
+	import Loader from '../components/Loader.svelte';
 
-	
+	import { afterUpdate } from 'svelte';
+
+	let show = false;
+
+	afterUpdate(() => {
+		show = true;
+	});
+
 	export let data: LayoutData;
 
-	
-	let auth: boolean = data.auth;
+	let auth: boolean = false;
+	let name: string = '';
+	let email: string = '';
 
-	
-	
+	$: auth = data.data;
+	$: name = data.name;
+	$: email = data.email;
+	$: avatar = data.avatar;
 </script>
 
-<div class=" font-quick flex flex-col   ">
-	<Header auth={auth}  />
+{#if show}
+	<div class=" font-quick flex flex-col">
+		<Header {auth} userName={name} userEmail={email} userAvatar={avatar} />
 
-	<div class=" z-50">
-		<slot />
+		<div class=" z-50">
+			<slot />
+		</div>
+
+		<Footer />
 	</div>
-	
-
-	<Footer />
-	
-	
-</div>
+{/if}
