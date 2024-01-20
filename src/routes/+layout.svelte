@@ -34,11 +34,13 @@
 	$: name = data.name;
 	$: email = data.email;
 	$: avatar = data.avatar;
+	$: wishlist = data.favourite;
+	$: cart = data.cart
 </script>
 
 {#if show}
 	<div class=" font-quick flex flex-col">
-		<Header {auth} userName={name} userEmail={email} userAvatar={avatar} />
+		<Header {auth} userName={name} userEmail={email} userAvatar={avatar} wishlist={wishlist} cart={cart} />
 
 		<div class=" z-50">
 			<slot />

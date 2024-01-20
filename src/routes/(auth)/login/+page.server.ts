@@ -11,7 +11,7 @@ export const actions = {
         const email = data.get("email")
         const pass = data.get("password")
 
-        console.log(data)
+        //console.log(data)
 
         try {
             
@@ -27,6 +27,7 @@ export const actions = {
 
                 cookies.set("token", `${data.session.access_token}`, {path: '/'})
                 cookies.set("userName", `${data.user.user_metadata['full_name']}`, {path: '/'})
+                cookies.set("userId", `${data.user.id}`, {path: '/'})
                 cookies.set("userEmail", `${data.user.email}`, {path: '/'})
                 cookies.set("userAvatar", `${data.user.user_metadata['avatar_url']}`, {path: '/'})
                 

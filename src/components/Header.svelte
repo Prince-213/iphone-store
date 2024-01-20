@@ -1,6 +1,6 @@
 <script lang="ts">
 	
-	import logo from '$lib/assets/logo/Frame 2.png';
+	import logo from '$lib/assets/logo/logo.jpg';
 	import {
 		HeartOutline,
 		CartOutline,
@@ -28,6 +28,8 @@
 	export let userName: string;
 	export let userEmail: string;
 	export let userAvatar: string;
+	export let wishlist: number | undefined;
+	export let cart: number | undefined;
 
 	import lottie, { type AnimationItem } from 'lottie-web';
 	import animationData from '$lib/assets/lottie/Animation - 1699732843324.json';
@@ -90,11 +92,11 @@
 </script>
 
 <div class=" top-0 w-full">
-	<header class=" border-b-2 py-6 w-full mx-auto bg-white">
+	<header class=" border-b-2 py-4 w-full mx-auto bg-white">
 		<div class=" flex w-[90%] lg:w-[80%] mx-auto justify-between items-center">
 			<div class=" w-[30%] flex justify-between items-center">
-				<button on:click={() => goto('/')}>
-					<img src={logo} alt="" />
+				<button class=" w-[60px] h-[60px]  lg:w-[80px] lg:h-[80px] rounded-full overflow-hidden" on:click={() => goto('/')}>
+					<img src={logo} class="" alt="" />
 				</button>
 			</div>
 
@@ -138,7 +140,7 @@
 									border
 									size="xl"
 									placement="top-right"
-									class="text-xs text-white font-bold">0</Indicator
+									class="text-xs text-white font-bold">{wishlist ?? 0}</Indicator
 								>
 							</button>
 						{:else}
@@ -156,7 +158,7 @@
 									border
 									size="xl"
 									placement="top-right"
-									class="text-xs text-white font-bold">0</Indicator
+									class="text-xs text-white font-bold">{cart ?? 0}</Indicator
 								>
 							</button>
 						{:else}
@@ -202,7 +204,7 @@
 								border
 								size="lg"
 								placement="top-right"
-								class="text-xs p-2 text-white font-bold">0</Indicator
+								class="text-xs p-2 text-white font-bold">{wishlist ?? 0}</Indicator
 							>
 						</button>
 					{:else}
@@ -220,7 +222,7 @@
 								border
 								size="lg"
 								placement="top-right"
-								class="text-xs p-2 text-white font-bold">0</Indicator
+								class="text-xs p-2 text-white font-bold">{cart ?? 0}</Indicator
 							>
 						</button>
 					{:else}

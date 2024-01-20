@@ -1,5 +1,5 @@
 <script lang="ts">
-	import iphone from '$lib/assets/iphones/14promax/iphone-14-promax.png';
+	import iphone from '$lib/assets/iphones/iphone13/iphone-13.png';
 
 	import phone from '$lib/assets/icons/Vector.png';
 	import cpu from '$lib/assets/icons/cpu.png';
@@ -10,22 +10,23 @@
 	import truck from '$lib/assets/icons/truck.png';
 	import store from '$lib/assets/icons/shop.png';
 	import verify from '$lib/assets/icons/verify.png';
-	import show from '$lib/assets/iphones/show.png';
+	import show from '$lib/assets/iphones/iphone13/iphone-13.png';
 	import show1 from '$lib/assets/iphones/show-1.png';
 	import show2 from '$lib/assets/iphones/show-2.png';
 	import show3 from '$lib/assets/iphones/show-3.png';
-	import { HeartOutline, HeartSolid } from 'flowbite-svelte-icons';
+	import { HeartOutline, HeartSolid, UsersSolid } from 'flowbite-svelte-icons';
 	import { fade, fly, scale } from 'svelte/transition';
 
 	export let data;
 
-	$: phoneDetail = data.phone;
+	let phoneDetail = data.phone;
 
 	import { reveal } from 'svelte-reveal';
 
 	import { navigating } from '$app/stores';
 
 	import Loader from '../../../components/Loader.svelte';
+	import { supabase } from '$lib/supabaseClient';
 
 	const phones = [
 		{
@@ -151,13 +152,19 @@
 
 	const like = false;
 
-	const colors = ['#000000', '#781DBC', '#E10000', '#E1B000', '#E8E8E8'];
+	$: liked = data.wished;
+
+	$: carted = data.carted
+
+	console.log(liked)
+
+	//const colors = ['#000000', '#781DBC', '#E10000', '#E1B000', '#E8E8E8'];
 
 	$: specs = [
 		{
 			id: 1,
 			title: 'Screen Size',
-			value: phoneDetail['screen-size'],
+			value: phoneDetail['screen_size'],
 			icon: phone
 		},
 		{
@@ -175,13 +182,13 @@
 		{
 			id: 4,
 			title: 'Main camera',
-			value: phoneDetail['main-camera'],
+			value: phoneDetail['main_camera'],
 			icon: camera
 		},
 		{
 			id: 5,
 			title: 'Front camera',
-			value: phoneDetail['front-camera'],
+			value: phoneDetail['front_camera'],
 			icon: front
 		},
 		{
@@ -192,9 +199,78 @@
 		}
 	];
 
+	let userId = data.userId;
+
+	import wish from '$lib/assets/lottie/icons8-heart.gif';
+	import cart from '$lib/assets/lottie/icons8-cart.gif';
+	import { invalidateAll } from '$app/navigation';
+	import { HeartIcon, ShoppingCartIcon } from 'lucide-svelte';
+
 	let activeColor = 0;
 	let activeStorage = 0;
 	let moreInfo = false;
+	let disabled = false;
+
+	let wishing = false;
+	let carting = false;
+
+	const addToWishList = async () => {
+		wishing = true;
+		try {
+			const { data, error } = await supabase
+				.from('favourites')
+				.upsert({
+					product_id: phoneDetail.product_id,
+					user_id: userId,
+					favourite_id: `${phoneDetail.product_id}${userId}`
+				})
+				.select();
+
+			wishing = false;
+			if (error) {
+				if (error.code == '23505') {
+					console.log('delete');
+
+					//const { error } = await supabase
+					//	.from('favourites')
+					//	.delete()
+					//	.eq('favourite_id', `${phoneDetail.product_id}${userId}`);
+				}
+			}
+
+			invalidateAll();
+				
+		} catch (error) {}
+	};
+
+	const addToCart = async () => {
+		carting = true;
+		try {
+			const { data, error } = await supabase
+				.from('carts')
+				.upsert({
+					product_id: phoneDetail.product_id,
+					user_id: userId,
+					cart_id: `${phoneDetail.product_id}${userId}`
+				})
+				.select();
+
+			carting = false;
+			if (error) {
+				if (error.code == '23505') {
+					console.log('delete');
+
+					//const { error } = await supabase
+					//	.from('favourites')
+					//	.delete()
+					//	.eq('favourite_id', `${phoneDetail.product_id}${userId}`);
+				}
+			}
+
+			invalidateAll();
+				
+		} catch (error) {}
+	}
 </script>
 
 {#if $navigating}
@@ -202,58 +278,47 @@
 		<Loader />
 	</div>
 {:else}
-	<div use:reveal={{ transition: 'fade', opacity: 1 }}  class=" w-full min-h-screen font-inter">
+	<div use:reveal={{ transition: 'fade', opacity: 1 }} class=" w-full min-h-screen font-inter">
 		<div class=" w-full font-inter py-[5vh] lg:py-[10vh] bg-white">
 			<div class=" lg:flex lg:justify-between lg:space-x-10 lg:items-center w-[80%] mx-auto">
-				<div use:reveal={{ transition: 'fly', duration: 400 }}
-					class=" w-full lg:w-[45%] flex flex-col-reverse max-h-[60vh] lg:space-x-10 pt-5 lg:pt-0 lg:flex items-center lg:flex-row"
+				<div
+					use:reveal={{ transition: 'fly', duration: 400 }}
+					class=" w-full lg:w-[40%] flex flex-col-reverse max-h-[60vh] lg:space-x-10 pt-5 lg:pt-0 lg:flex items-center lg:flex-row"
 				>
-					<div
-						class=" lg:w-[20%] w-full max-h-fit lg:justify-end flex lg:flex-col pt-8 lg:pt-0 pb-14 lg:pb-0 justify-between flex-row items-center lg:space-y-6"
-					>
-						<img src={show} alt="" />
-						<img class=" opacity-40" src={show1} alt="" />
-						<img class=" opacity-40" src={show2} alt="" />
-						<img class=" opacity-40" src={show3} alt="" />
-					</div>
-					<div class=" w-[75%]">
-						<img class=" w-full" src={iphone} alt="" />
+					<div class=" w-full">
+						<img class=" object-contain w-auto h-[70vh]" src={`${phoneDetail.image}`} alt="" />
 					</div>
 				</div>
-				<div use:reveal={{ transition: 'slide', duration: 400 }}  class=" lg:w-[55%] space-y-6">
+				<div use:reveal={{ transition: 'slide', duration: 400 }} class=" lg:w-[60%] space-y-6">
 					<h1 class=" text-black-100 text-left text-3xl lg:text-[40px] font-semibold font-inter">
-						{phoneDetail.name}
+						{phoneDetail.product_name}
 					</h1>
 					<div class=" flex items-center space-x-4">
-						<h2 class=" text-[32px] font-medium">${phoneDetail.price}</h2>
-						<del class=" text-[#A0A0A0] text-[24px]">${phoneDetail['old-price']}</del>
+						<h2 class=" text-[32px] font-medium">₦{Intl.NumberFormat().format(phoneDetail.price)}</h2>
+						<del class=" text-[#A0A0A0] text-[24px]">₦{Intl.NumberFormat().format(phoneDetail['old_price'])}</del>
 					</div>
 					<div class=" flex items-center space-x-6">
 						<p class=" font-medium text-[15px]">Select color:</p>
 						<div class=" flex items-center space-x-4">
-							{#each phoneDetail.colors as col, idx}
-								<button
-									on:click={() => (activeColor = idx)}
-									class={` w-8 h-8 relative  rounded-[50%]`}
-									style={`background-color: ${col}; `}
-								>
-									<div
-										style={`border-color: ${activeColor == idx ? col : '#fff'};`}
-										class=" -translate-x-1 -translate-y-1 w-10 h-10 border-2 transition-all duration-100 rounded-[50%]"
-									></div>
-								</button>
-							{/each}
+							<button
+								on:click={() => (activeColor = 0)}
+								class={` w-8 h-8 relative  rounded-[50%]`}
+								style={`background-color: #${phoneDetail.color}; `}
+							>
+								<div
+									style={`border-color: #${phoneDetail.color};`}
+									class=" -translate-x-1 -translate-y-1 w-10 h-10 border-2 transition-all duration-100 rounded-[50%]"
+								></div>
+							</button>
 						</div>
 					</div>
 					<div class=" flex space-x-4">
-						{#each phoneDetail.storage as storage, idx}
-							<button
-								on:click={() => (activeStorage = idx)}
-								style={`border-color: ${activeStorage == idx ? '#000' : ''};`}
-								class=" w-[95px] transition-all duration-100 flex items-center justify-center border-gray-200 rounded-md py-3 text-sm lg:text-base border-2"
-								>{storage}</button
-							>
-						{/each}
+						<button
+							on:click={() => (activeStorage = 0)}
+							style={`border-color: ${'#000'};`}
+							class=" w-[95px] transition-all duration-100 flex items-center justify-center border-gray-200 rounded-md py-3 text-sm lg:text-base border-2"
+							>{phoneDetail.storage}GB</button
+						>
 					</div>
 					<div class=" grid grid-cols-2 lg:grid-cols-3 gap-4 w-full">
 						{#each specs as spec}
@@ -269,12 +334,36 @@
 						{/each}
 					</div>
 					<div class=" flex lg:flex-row flex-col items-center lg:space-x-5 space-y-5 lg:space-y-0">
-						<button class=" border-2 w-full lg:w-[50%] py-4 rounded-md border-black-100"
-							>Add to Wishlist</button
+						<button
+							on:click={addToWishList}
+							class=" relative border-2 w-full lg:w-[50%] py-4 rounded-md border-black-100 flex items-center justify-center space-x-8"
 						>
-						<button class=" w-full lg:w-[50%] py-4 rounded-md text-white bg-black-100"
-							>Add to Cart</button
+							<p>Add to Wishlist</p>
+							{#if wishing}
+								<div class=" right-[10px] absolute"><img width="30px" src={wish} alt="" /></div>
+								
+							{:else if liked}
+							<div class=" absolute right-[10px]" transition:scale>
+								<HeartSolid size="lg" strokeWidth="1.2" class="   text-heart-100" />
+								
+							</div>
+							{/if}
+						</button>
+						<button
+							on:click={addToCart}
+							class=" relative border-2 w-full lg:w-[50%] py-4 rounded-md border-black-100 flex items-center justify-center space-x-8"
 						>
+							<p>Add to Cart</p>
+							{#if carting}
+								<div class=" right-[10px] absolute"><img width="25px" src={cart} alt="" /></div>
+								
+							{:else if carted}
+							<div class=" absolute  right-[10px]" transition:scale>
+								<ShoppingCartIcon color="rgb(14 159 110)"/>
+								
+							</div>
+							{/if}
+						</button>
 					</div>
 					<div class=" flex items-center justify-between">
 						<div
@@ -332,7 +421,7 @@
 					<h2 class=" text-[20px] font-medium">Screen</h2>
 					<div class=" py-2 flex justify-between border-b-2">
 						<h1>Screen diagonal</h1>
-						<h1>6.7</h1>
+						<h1>{phoneDetail['screen_size']}</h1>
 					</div>
 				</div>
 
@@ -341,25 +430,25 @@
 					<div class=" space-y-4">
 						<div class=" py-2 flex justify-between border-b-2">
 							<h1>CPU</h1>
-							<h1>A16 Bionic</h1>
+							<h1>{phoneDetail['cpu']}</h1>
 						</div>
 						<div class=" py-2 flex justify-between border-b-2">
 							<h1>Number of cores</h1>
-							<h1>6</h1>
+							<h1>{phoneDetail['cores']}</h1>
 						</div>
 					</div>
 					{#if moreInfo}
-						<div>
+						<div use:reveal={{ transition: 'fly', threshold: 0.2, duration: 200 }}>
 							<div class=" mt-8">
 								<h2 class=" text-[20px] font-medium">CAMERA</h2>
 								<div class=" space-y-4">
 									<div class=" py-2 flex justify-between border-b-2">
 										<h1>Main Camera</h1>
-										<h1>{phoneDetail['main-camera']}</h1>
+										<h1>{phoneDetail['main_camera']}</h1>
 									</div>
 									<div class=" py-2 flex justify-between border-b-2">
 										<h1>Front Camera</h1>
-										<h1>{phoneDetail['front-camera']}</h1>
+										<h1>{phoneDetail['front_camera']}</h1>
 									</div>
 								</div>
 							</div>
@@ -373,7 +462,7 @@
 									</div>
 									<div class=" py-2 flex justify-between border-b-2">
 										<h1>Battery Capacity</h1>
-										<h1>100</h1>
+										<h1>{phoneDetail['battery']}</h1>
 									</div>
 								</div>
 							</div>
@@ -383,11 +472,11 @@
 								<div class=" space-y-4">
 									<div class=" py-2 flex justify-between border-b-2">
 										<h1>Screen resolution</h1>
-										<h1>{phoneDetail['resolution'][0]} x {phoneDetail['resolution'][1]}</h1>
+										<h1>{phoneDetail['resolution']}</h1>
 									</div>
 									<div class=" py-2 flex justify-between border-b-2">
 										<h1>Refresh Rate</h1>
-										<h1>{phoneDetail['refresh-rate']}HZ</h1>
+										<h1>{phoneDetail['refresh_rate']}HZ</h1>
 									</div>
 									<div class=" py-2 flex justify-between border-b-2">
 										<h1>Pixel Density</h1>
@@ -395,18 +484,14 @@
 									</div>
 									<div class=" py-2 flex justify-between border-b-2">
 										<h1>Screen Type</h1>
-										<h1>{phoneDetail['screen-type']}</h1>
+										<h1>{phoneDetail['screen_type']}</h1>
 									</div>
 								</div>
 
 								<div class=" mt-8">
 									<h2 class=" text-[20px] font-medium">Additional Information</h2>
 									<div class=" space-y-4">
-										{#each phoneDetail['additional'] as info}
-											<div class=" py-2 flex justify-between border-b-2">
-												{info}
-											</div>
-										{/each}
+										<p>{phoneDetail['additional_info']}</p>
 									</div>
 								</div>
 							</div>

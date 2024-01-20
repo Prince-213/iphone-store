@@ -52,7 +52,7 @@
 </script>
 
 {#if $navigating}
-	<div use:reveal={{ transition: 'fade' }}>
+	<div use:reveal={{ transition: 'fade', threshold: 0.1 }}>
 		<Loader />
 	</div>
 {:else}

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Loader from './../../components/Loader.svelte';
 	import Image from './../../../node_modules/lucide-svelte/dist/icons/image.svelte';
 	import type { PageData } from './$types';
 	import { reveal } from 'svelte-reveal';
@@ -7,66 +8,56 @@
 
 	import { MinusIcon, PlusIcon, XIcon } from 'lucide-svelte';
 	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
+	import { goto, invalidateAll } from '$app/navigation';
 	import { navigating } from '$app/stores';
-	import Loader from '../../components/Loader.svelte';
 
-	type cart = {
-		id: number;
-		name: string;
-		image: string;
-		quantity: number;
-		price: number;
-	}[];
+	import { slide } from 'svelte/transition';
 
-	let cart = [
-		{
-			id: 23455555599,
-			name: 'Apple IPhone 14 Pro Max 128Gb Deep Purple',
-			image: iphone,
-			quantity: 1,
-			price: 837
-		},
-		{
-			id: 1345599599,
-			name: 'Apple IPhone 14 Pro Max 128Gb Deep Purple',
-			image: iphone,
-			quantity: 1,
-			price: 937
-		}
-	];
+	import trash from '$lib/assets/lottie/icons8-delete.gif';
+	import { supabase } from '$lib/supabaseClient';
 
-	let totalCart: number[];
-	$: totalCart = [];
+	import spin from '$lib/assets/images/Iphone-spinner-2.gif';
 
-	let subtotal: number;
+	export let data;
 
-	const initialSub = () => {};
+	$: wishlist = data.wishlist;
+	let userId = data.userid;
 
-	onMount(async () => {
-		for (let index = 0; index < cart.length; index++) {
-			totalCart.push(cart[index]['price']);
-		}
-		subtotal = totalCart.reduce((ac, cu) => ac + cu, 0);
-	});
+	console.log(wishlist);
 
-	const removeSubTotal = (price: number) => {
-		subtotal -= price;
+	let deleting = true;
+
+	const removeWish = async (productId: string) => {
+		deleting = true;
+		wishlist = wishlist.map((iphone: any) => {
+			if (iphone.id == productId) {
+				return { ...iphone, action: true };
+			}
+			return iphone;
+		});
+		try {
+			const { error } = await supabase
+				.from('favourites')
+				.delete()
+				.eq('favourite_id', `${productId}${userId}`);
+			deleting = false;
+			//wishlist = wishlist.map((iphone: any) => {
+			//	if (iphone.id == productId) {
+			//		return { ...iphone, action: false };
+			//	}
+			//	return iphone;
+			//});
+			invalidateAll();
+		} catch (error) {}
 	};
-
-	const addSubTotal = (price: number) => {
-		subtotal += price;
-	};
-
-	let tooLow = false;
 </script>
 
 {#if $navigating}
-	<div use:reveal={{ transition: 'fade' }}>
+	<div use:reveal={{ transition: 'fade', threshold: 0.1 }}>
 		<Loader />
 	</div>
-	{:else}
-	<div use:reveal={{ transition: 'fade', opacity: 1 }}  class=" w-full min-h-screen font-inter">
+{:else}
+	<div use:reveal={{ transition: 'fade', opacity: 1 }} class=" w-full min-h-screen font-inter">
 		<div class=" w-full py-[5vh] lg:py-[10vh]">
 			<div class=" lg:w-[80%] space-y-2 mx-auto bg-white px-8">
 				<h1 class=" font-semibold text-2xl">Favourite Items</h1>
@@ -75,19 +66,30 @@
 					class=" flex flex-col space-y-2 lg:flex-row lg:space-y-0 lg:justify-between lg:items-start"
 				>
 					<div class=" grid lg:gap-x-20 lg:grid-cols-2">
-						{#each cart as item, idx}
-							<div class={` w-full flex space-x-4 items-center border-gray-200 border-b-2 py-10 `}>
+						{#each wishlist as item, idx}
+							<div
+								transition:slide
+								class={` w-full flex space-x-4 items-center border-gray-200 border-b-2 py-10 `}
+							>
 								<div class=" w-[20%]">
 									<img src={item.image} alt="" />
 								</div>
-								<div class=" ">
+								<div class=" w-full">
 									<h3 class=" text-base font-medium">{item.name}</h3>
-									<p class=" text-sm text-gray-600">#{item.id}</p>
-									<div class=" mt-2 flex justify-between items-center">
+
+									<div class="  w-full mt-2 flex justify-between items-center">
 										<h1 class=" font-medium text-xl">
-											${item.quantity * item.price}
+											₦{Intl.NumberFormat().format(item.price)}
 										</h1>
-										<button><XIcon class=" w-5 text-gray-500" /></button>
+
+										{#if !item.action}
+											<button on:click={() => removeWish(item.id)}
+												><img width="30px" src={trash} alt="" /></button
+											>
+										{:else}
+											
+											<img src={spin} width="20px" alt="" />
+										{/if}
 									</div>
 								</div>
 							</div>

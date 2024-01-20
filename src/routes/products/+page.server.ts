@@ -1,5 +1,6 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
+import { supabase } from '$lib/supabaseClient';
 
 
 type iphones = {
@@ -17,7 +18,7 @@ type iphonesImg = {
     images: string[],
 }[]
 
-export const load = (async ( { fetch, url } ) => {
+export const load = (async ( { fetch, url, cookies } ) => {
     const limit = Number(url.searchParams.get('limit')) || 12;
     const skip = Number(url.searchParams.get('skip')) || 0;
 
@@ -27,21 +28,28 @@ export const load = (async ( { fetch, url } ) => {
         }
 
         const res = await fetch(`/api/phones?limit=${limit}&skip=${skip}`);
-        const data: iphones = await res.json();
+        const data = await res.json();
         return data;
     }
 
-    const res = await fetch('http://localhost:4000/iphones');
-    const iphone: iphones = await res.json();
+    //const res = await fetch('http://localhost:4000/iphones');
+    const iphone = (await supabase
+        .from('products')
+        .select('*')).data;
+
+    let userId = cookies.get("userId");
+    const res = await fetch(`/api/wishlist/${userId}`)
+    const data = await res.json();
+    
+    let idArray = data.map((item: any) => item.id);
 
 
 
-    const resImg = await fetch('http://localhost:4000/iphone-images');
-    const iphoneImg: iphonesImg = await resImg.json();
+    
 
     return {
-        total: iphone.length,
-        iphoneImgs: iphoneImg,
+        total: iphone?.length ?? 0,
+        wishlist: idArray, 
         phones: getIphones(limit, skip),
         skip: skip
     };

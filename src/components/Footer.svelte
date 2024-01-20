@@ -1,5 +1,5 @@
 <script lang="ts">
-	import logo  from '$lib/assets/logo/Frame 2.png';
+	import logo  from '$lib/assets/logo/logo.jpg';
 	import Header from './../components/Header.svelte';
 	import { MapLocationOutline, EnvelopeOutline, PhoneOutline, FacebookSolid, TwitterSolid, TailwindSolid, GithubSolid } from "flowbite-svelte-icons"
 	import '../app.pcss';
@@ -10,7 +10,9 @@
 <footer class=" shadow-xl bottom-0  w-full bg-black-100 text-white py-12">
     <div class=" w-[90%] space-y-8 lg:space-y-0 lg:flex-row flex-col flex justify-between items-center  mx-auto">
         <div class=" lg:w-[20%] space-y-5 flex flex-col items-center lg:block">
-            <img src={logo} alt="">
+            <button class=" w-[60px] h-[60px]  lg:w-[80px] lg:h-[80px] rounded-full overflow-hidden" >
+                <img src={logo} class="" alt="" />
+            </button>
             <p class=" font-medium text-gray-500">We are a residential interior design firm located in Portland. Our boutique-studio offers more than</p>
             <p>Copyright &copy; CYBER</p>
         </div>

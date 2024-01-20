@@ -1,3 +1,4 @@
+import { supabase } from '$lib/supabaseClient';
 import type { PageServerLoad } from './$types';
 
 type iphone = {
@@ -39,16 +40,53 @@ type iphone = {
 }
 
 
-export const load = (async ({ params, fetch }) => {
+
+
+export const load = (async ({ params, fetch, cookies }) => {
 
     const { productId } = params;
 
+    let liked = false;
+    let carted = false;
+
     const res = await fetch(`/api/phones/${productId}`)
-    const data: iphone = await res.json();
+    const data = await res.json();
+
+    let userId = cookies.get('userId')
 
     
+    let wish = (await supabase
+    .from('favourites')
+    .select("*")
+    
+    // Filters
+    .eq('favourite_id', `${data.product_id}${userId}`)).data
+
+    let cart = (await supabase
+        .from('carts')
+        .select("*")
+        
+        // Filters
+        .eq('cart_id', `${data.product_id}${userId}`)).data
+
+    if ( wish?.length != 0 ) {
+        liked = true;
+    }else {
+        liked = false;
+    }
+    
+    if ( cart?.length != 0 ) {
+        carted = true;
+    }else {
+        carted = false;
+    }
+    
+   
 
     return {
-        phone: data
+        phone: data,
+        userId: userId,
+        wished: liked,
+        carted: carted
     };
 }) satisfies PageServerLoad ;

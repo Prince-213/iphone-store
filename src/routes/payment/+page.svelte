@@ -7,9 +7,22 @@
 
 	import { reveal } from 'svelte-reveal';
 
-	import { navigating } from '$app/stores';
+	import { navigating, page } from '$app/stores';
 
 	import Loader from '../../components/Loader.svelte';
+
+	import { MapPinIcon, TruckIcon, CreditCardIcon } from 'lucide-svelte';
+	import { MapPinSolid, TruckSolid, PenSolid, CloseSolid, PlusSolid } from 'flowbite-svelte-icons';
+	import { Badge, Helper, Radio } from 'flowbite-svelte';
+	import Address from '../../components/Address.svelte';
+	import { goto } from '$app/navigation';
+
+	import address from '$lib/data/adress.json';
+	import { checkOutCart } from '$lib/data/store';
+
+	console.log($checkOutCart);
+
+	let group3 = 2;
 
 	let cart = [
 		{
@@ -27,55 +40,162 @@
 			price: 937
 		}
 	];
+
+	import { Section } from 'flowbite-svelte-blocks';
+	import { Label, Input, Button, Modal, Textarea, Select } from 'flowbite-svelte';
+	let defaultModal = false;
+	const handleSubmit = () => {
+		alert('Form submited.');
+	};
+	let selected;
+	let countries = [
+		{ value: 'tv', name: 'TV/Monitors' },
+		{ value: 'pc', name: 'PC' },
+		{ value: 'phone', name: 'Phones' }
+	];
 </script>
 
 {#if $navigating}
-	<div use:reveal={{ transition: 'fade' }}>
+	<div use:reveal={{ transition: 'fade', threshold: 0.1 }}>
 		<Loader />
 	</div>
 {:else}
-	<div use:reveal={{ transition: 'fade', opacity: 1 }}  class=" w-full min-h-screen">
-		<div class=" lg:w-[80%] flex flex-col lg:flex-row mx-auto py-[10vh]">
-			<div class=" py-14 px-4 border-2 rounded-md space-y-4 lg:w-[45%]">
-				<h1 class=" text-xl font-semibold">Summary</h1>
-				<div>
-					<div class=" space-y-4">
-						{#each cart as item, idx}
-							<div class=" w-full bg-slate-100 flex space-x-4 items-center p-4 rounded-md">
-								<div class=" w-10">
-									<img src={item.image} alt="" />
-								</div>
-								<div class=" flex items-center justify-between w-full">
-									<h3 class=" text-sm font-medium">{item.name}</h3>
-
-									<h1 class=" font-medium text-base">
-										${item.quantity * item.price}
-									</h1>
-								</div>
-							</div>
-						{/each}
+	<div class=" w-full min-h-screen">
+		<Modal title="Add Product" bind:open={defaultModal} autoclose class="min-w-full">
+			<form on:submit={handleSubmit}>
+				<div class="grid gap-4 mb-4 sm:grid-cols-2">
+					<div>
+						<Label for="name" class="mb-2">Name</Label>
+						<Input type="text" id="name" placeholder="Type product name" required />
 					</div>
+					<div>
+						<Label for="brand" class="mb-2">Brand</Label>
+						<Input type="text" id="brand" placeholder="Product brand" required />
+					</div>
+					<div>
+						<Label for="price" class="mb-2">Price</Label>
+						<Input type="text" id="price" placeholder="$29999" required />
+					</div>
+					<div>
+						<Label
+							>Category
+							<Select class="mt-2" items={countries} bind:value={selected} required />
+						</Label>
+					</div>
+					<div class="sm:col-span-2">
+						<Label for="description" class="mb-2">Description</Label>
+						<Textarea
+							id="description"
+							placeholder="Your description here"
+							rows="4"
+							name="description"
+							required
+						/>
+					</div>
+					<Button type="submit" class="w-52">
+						<svg
+							class="mr-1 -ml-1 w-6 h-6"
+							fill="currentColor"
+							viewBox="0 0 20 20"
+							xmlns="http://www.w3.org/2000/svg"
+							><path
+								fill-rule="evenodd"
+								d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+								clip-rule="evenodd"
+							/></svg
+						>
+						Add new product
+					</Button>
 				</div>
-				<div class=" flex justify-between items-center">
-					<h1 class=" text-base font-semibold">Subtotal</h1>
-					<h1 class=" text-base font-semibold">$1233</h1>
+			</form>
+		</Modal>
+		<div
+			use:reveal={{ transition: 'slide', threshold: 0.2, duration: 500 }}
+			class=" lg:w-[80%] w-[95%] flex flex-col mx-auto py-[10vh] mt-[48px]"
+		>
+			<h1 class=" font-semibold text-xl">Select Address</h1>
+			<ul class=" py-8 w-full space-y-5">
+				<li
+					class="rounded-md p-6 flex items-center justify-between bg-[#f6f6f6] hover:bg-gray-100 dark:hover:bg-gray-600"
+				>
+					<div>
+						<Radio class=" " color="green" name="group3" bind:group={group3} value={1}
+							><div class=" ml-2 flex space-x-6">
+								<p class=" text-lg">2118 Thomridge</p>
+								<Badge large class=" bg-black-100 text-white">HOME</Badge>
+							</div></Radio
+						>
+						<Helper class="ps-6 mt-4">
+							<div class=" ml-2">
+								<p class=" text-base">2118 Thornridge Cir.Syracuse, Connecticut 35624</p>
+								<p class=" text-base mt-2">(234) 555-0104</p>
+							</div>
+						</Helper>
+					</div>
+					<div class=" flex items-center space-x-5 lg:space-x-10">
+						<button>
+							<PenSolid />
+						</button>
+						<button>
+							<CloseSolid />
+						</button>
+					</div>
+				</li>
+				<li
+					class="rounded-md p-6 flex items-center justify-between bg-[#f6f6f6] hover:bg-gray-100 dark:hover:bg-gray-600"
+				>
+					<div>
+						<Radio class=" " color="green" name="group3" bind:group={group3} value={2}
+							><div class=" ml-2 flex space-x-6">
+								<p class=" text-lg">2118 Thomridge</p>
+								<Badge large class=" bg-black-100 text-white">HOME</Badge>
+							</div></Radio
+						>
+						<Helper class="ps-6 mt-4">
+							<div class=" ml-2">
+								<p class=" text-base">2118 Thornridge Cir.Syracuse, Connecticut 35624</p>
+								<p class=" text-base mt-2">(234) 555-0104</p>
+							</div>
+						</Helper>
+					</div>
+					<div class=" flex items-center space-x-5 lg:space-x-10">
+						<button>
+							<PenSolid />
+						</button>
+						<button>
+							<CloseSolid />
+						</button>
+					</div>
+				</li>
+			</ul>
+			<div class=" w-full flex flex-col justify-center items-center">
+				<div class=" mt-5 w-full flex items-center justify-between">
+					<div class=" w-[48%] border-t-2 border-dashed opacity-25 border-black-100"></div>
+					<button
+						on:click={() => (defaultModal = true)}
+						class=" w-[30px] h-[30px] rounded-[50%] bg-black-100 flex items-center justify-center"
+					>
+						<PlusSolid size="sm" class=" text-white" />
+					</button>
+					<div class=" w-[48%] opacity-25 border-t-2 border-dashed border-black-100"></div>
 				</div>
-				<div class=" flex justify-between items-center">
-					<h1 class=" text-base text-gray-500">Estimated Tax</h1>
-					<h1 class=" text-base font-semibold">$50</h1>
+				<h1 class=" text-base font-semibold">Add New Address</h1>
+			</div>
+			<div class=" w-full flex flex-row mt-10 justify-center lg:justify-end">
+				<div class=" lg:w-[30%] w-[70%] flex items-center space-x-5">
+					<button
+						on:click={() => goto('/cart')}
+						class=" py-5 font-medium w-1/2 border-2 border-black-100 rounded-md"
+					>
+						Back
+					</button>
+					<button
+						on:click={() => goto('/payment/shipping')}
+						class=" py-5 bg-black-100 text-white font-medium w-1/2 border-2 border-black-100 rounded-md"
+					>
+						Next
+					</button>
 				</div>
-				<div class=" flex justify-between items-center">
-					<h1 class=" text-base text-gray-500">Estimated Shipping & Handling</h1>
-					<h1 class=" text-base font-semibold">$50</h1>
-				</div>
-				<div class=" flex justify-between items-center">
-					<h1 class=" text-base font-semibold">Total</h1>
-					<h1 class=" text-base font-semibold">${4444 + 100}</h1>
-				</div>
-				<br />
-				<button class=" w-full py-4 bg-black-100 rounded-md text-white font-medium">
-					Checkout
-				</button>
 			</div>
 		</div>
 	</div>

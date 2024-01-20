@@ -15,7 +15,7 @@ export const load = (async ({ cookies, url }) => {
         cookies.delete('userName', {path: '/'})
         cookies.delete('userEmail', {path: '/'})
         cookies.delete('userAvatar', {path: '/'})
-        
+        cookies.delete('userId', {path: '/'})
     }
     return {};
 }) satisfies PageServerLoad;
